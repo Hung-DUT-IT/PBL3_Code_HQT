@@ -95,5 +95,22 @@ namespace Code_PBL3.DAO
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
+        public int GetIDStaff(int idAcc)
+        {
+            try
+            {
+                return (int)DataProvider.Instance.ExecuteSaclar("select IdStaff from Account where IdAccount = " + idAcc);
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+        public bool UpdateAccountByMe(int idac, string displayName)
+        {
+            string query = string.Format("Update Account set DisplayName = N'{1}' where IdAccount = {0}", idac, displayName);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
     }
 }

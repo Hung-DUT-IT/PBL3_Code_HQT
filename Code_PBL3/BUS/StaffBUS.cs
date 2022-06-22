@@ -28,18 +28,29 @@ namespace Code_PBL3.BUS
         }
         public List<Staff> LoadStaff()
         {
-            return StaffBUS.instance.LoadStaff();
+            return StaffDAO.Instance.LoadStaff();
         }
-        public void Update_Staff(int idStaff, string userName, string Positon, string Shitf)
+        public void UpdateStaffByMe(int idStaff, string Name, string Phone)
         {
-            if (StaffDAO.Instance.UpdateStafff(idStaff, userName, Positon, Shitf))
+            if (StaffDAO.Instance.UpdateStaffByMe(idStaff, Name, Phone))
             {
-                MessageBox.Show("Cập nhật nhân viên thành công ");
+                MessageBox.Show("Successfully Updated Information");
+            }
+            else
+            {
+                MessageBox.Show("ERROR !!! \nInformation Update Failed");
+            }
+        }
+        public void UpdateStaffByAdmin(int idStaff, string Name, string Positon, string Shitf)
+        {
+            if (StaffDAO.Instance.UpdateStaffByAdmin(idStaff, Name, Positon, Shitf))
+            {
+                MessageBox.Show("Employee Update Successful");
 
             }
             else
             {
-                MessageBox.Show("ERROR !!! \nCập nhật nhân viên không thành công ");
+                MessageBox.Show("ERROR !!! \nEmployee Update Failed ");
             }
         }
         public void DelStafff(int idstaff)
@@ -47,24 +58,22 @@ namespace Code_PBL3.BUS
 
             if (StaffDAO.Instance.DeleteStaff(idstaff))
             {
-                MessageBox.Show("Xóa nhân viên  thành công ");
-                /*if (deleteStaff != null)
-                    deleteStaff(this, new EventArgs());*/
+                MessageBox.Show("Employee Delete Successful");
             }
             else
             {
-                MessageBox.Show("ERROR !!! \nXóa nhân viên  không thành công ");
+                MessageBox.Show("ERROR !!! \nEmployee Delete Failed ");
             }
         }
         public void AddStaff(string name, string Phone, string Position, string Shift)
         {
             if (StaffDAO.Instance.InsertStaff(name, Phone, Position, Shift))
             {
-                MessageBox.Show("Thêm nhân viên thành công ");
+                MessageBox.Show("Employee Add Successful");
             }
             else
             {
-                MessageBox.Show("ERROR !!! \nThêm nhân viên không thành công ");
+                MessageBox.Show("ERROR !!! \nEmployee Add Failed ");
             }
 
         }

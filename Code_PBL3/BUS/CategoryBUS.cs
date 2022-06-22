@@ -40,22 +40,22 @@ namespace Code_PBL3.BUS
         {
             if (CategoryDAO.Instance.AddCategory(name))
             {
-                MessageBox.Show("Thêm danh mục món ăn thành công ");
+                MessageBox.Show("Add A Successful Category ");
             }
             else
             {
-                MessageBox.Show("ERROR !!! \nThêm danh mục món ăn không thành công ");
+                MessageBox.Show("ERROR !!! \nAdd failed category ");
             }
         }
         public void UpdateCategory(int idCategory, string namecategory)
         {
             if (CategoryDAO.Instance.UpdateCategory(idCategory, namecategory))
             {
-                MessageBox.Show("Cập nhật danh mục món ăn thành công ");
+                MessageBox.Show("Updating the list of successful Category ");
             }
             else
             {
-                MessageBox.Show("ERROR !!! \nCập nhật danh mục món ăn không thành công ");
+                MessageBox.Show("ERROR !!! \n Updating failed Category ");
             }
         }
         public void DelCategory(int idCategory)
@@ -63,11 +63,11 @@ namespace Code_PBL3.BUS
 
             if (CategoryDAO.Instance.DeleteCategory(idCategory))
             {
-                MessageBox.Show("Xóa danh mục món ăn thành công ");
+                MessageBox.Show("Delete the list of successful Category ");
             }
             else
             {
-                MessageBox.Show("ERROR !!! \nXóa danh mục món ăn không thành công ");
+                MessageBox.Show("ERROR !!! \n Delete failed Category ");
             }
         }
         public List<Category> SearchCategoryByName(string name)

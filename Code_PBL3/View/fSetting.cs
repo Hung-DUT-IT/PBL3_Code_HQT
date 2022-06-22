@@ -21,10 +21,17 @@ namespace Code_PBL3
             get { return idAccount; }
             set { idAccount = value; }
         }
-        public fSetting(int id)
+        private int idStaff ;
+        public int IdStaff
+        {
+            get { return idStaff; }
+            set { idStaff = value; }
+        }
+        public fSetting(int idAcc, int idStaff)
         {
             InitializeComponent();
-            this.AccountID = id;
+            this.AccountID = idAcc;
+            this.IdStaff = idStaff; 
             LoadStaff();
             LoadAccount();
         }
@@ -46,9 +53,9 @@ namespace Code_PBL3
             txbDisplayName.Text = ac.DisPlayName.ToString();
             if (ac.Type == 1)
             {
-                txbTypeAccount.Text = "Tài Khoản Loại Quản Lý"; 
+                txbTypeAccount.Text = "Account Type Management"; 
             }
-            else txbTypeAccount.Text = "Tài Khoản Loại";
+            else txbTypeAccount.Text = "Account Type Employee";
         }
         private void tabPInformationStaff_Click(object sender, EventArgs e)
         {
@@ -61,6 +68,19 @@ namespace Code_PBL3
             string newPass = txbNewPass.Text;
             string confrimpass = txbConfrimPass.Text;
             AccountBUS.Instance.AlterPass(currentpass, newPass, confrimpass,this.AccountID);
+        }
+
+        private void btUpdate_Click(object sender, EventArgs e)
+        {
+            string name = txbNamestaff.Text;
+            string phone = txbPhone.Text;
+            StaffBUS.Instance.UpdateStaffByMe(this.IdStaff, name, phone);
+        }
+
+        private void btUpdateAcc_Click(object sender, EventArgs e)
+        {
+            string displayName = txbDisplayName.Text;
+            AccountBUS.Instance.UpdateAccountByMe(this.AccountID, displayName);
         }
     }
 }

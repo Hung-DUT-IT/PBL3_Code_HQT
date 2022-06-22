@@ -55,10 +55,10 @@ namespace Code_PBL3.View
                 this.idbillNew = BillDAO.Instance.GetUnCheckBillIDByTableID(this.IdTableTached);
             }
 
-            Table table1 = TableBUS.Instance.GetTableByID(this.IdTableOrigin);
-            Table table2 = TableBUS.Instance.GetTableByID(this.IdTableTached);
+            TableFood table1 = TableFoodBUS.Instance.GetTableByID(this.IdTableOrigin);
+            TableFood table2 = TableFoodBUS.Instance.GetTableByID(this.IdTableTached);
             
-            dgvOriginTable.DataSource = MenuBillBUS.Instance.GetListMenuByBILL(idBill_1);
+            dgvOriginTable.DataSource = MenuBillBUS.Instance.GetListMenuByBill(idBill_1);
             
             
             txbTableOrigin.Text = table1.NameTable.ToString();
@@ -129,7 +129,7 @@ namespace Code_PBL3.View
                 if (BillBUS.Instance.DelBill(this.idbillNew))
                 {
                     MessageBox.Show("Bạn Đã Hủy Tách Hóa Đơn Hành Công !!!");
-                    TableBUS.Instance.UpdateSatus(this.idTableDeTached);
+                    TableFoodBUS.Instance.UpdateSatus(this.idTableDeTached);
                     this.Close();
                     this.d("All");
                 }

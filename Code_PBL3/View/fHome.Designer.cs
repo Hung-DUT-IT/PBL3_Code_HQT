@@ -86,7 +86,7 @@
             this.lbDisplayName.AutoSize = true;
             this.lbDisplayName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbDisplayName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lbDisplayName.Location = new System.Drawing.Point(1400, 9);
+            this.lbDisplayName.Location = new System.Drawing.Point(1347, 21);
             this.lbDisplayName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbDisplayName.Name = "lbDisplayName";
             this.lbDisplayName.Size = new System.Drawing.Size(70, 25);
@@ -113,7 +113,7 @@
             this.lbTimer.AutoSize = true;
             this.lbTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbTimer.ForeColor = System.Drawing.Color.Chocolate;
-            this.lbTimer.Location = new System.Drawing.Point(1202, 39);
+            this.lbTimer.Location = new System.Drawing.Point(1202, 65);
             this.lbTimer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTimer.Name = "lbTimer";
             this.lbTimer.Size = new System.Drawing.Size(92, 31);

@@ -92,7 +92,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label3.ForeColor = System.Drawing.Color.Chocolate;
-            this.label3.Location = new System.Drawing.Point(189, 130);
+            this.label3.Location = new System.Drawing.Point(87, 130);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(157, 24);
@@ -104,7 +104,7 @@
             this.lbDateTimeCheckin.AutoSize = true;
             this.lbDateTimeCheckin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbDateTimeCheckin.ForeColor = System.Drawing.Color.Chocolate;
-            this.lbDateTimeCheckin.Location = new System.Drawing.Point(344, 130);
+            this.lbDateTimeCheckin.Location = new System.Drawing.Point(360, 130);
             this.lbDateTimeCheckin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbDateTimeCheckin.Name = "lbDateTimeCheckin";
             this.lbDateTimeCheckin.Size = new System.Drawing.Size(66, 24);

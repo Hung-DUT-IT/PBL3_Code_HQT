@@ -45,33 +45,33 @@ namespace Code_PBL3.BUS
         {
             if (AccountDAO.Instance.InsertAccount(userName, DisplayName, Type, pass))
             {
-                MessageBox.Show("Thêm tài khoản thành công ");
+                MessageBox.Show("Successfully Added Account");
             }
             else
             {
-                MessageBox.Show("ERROR !!! \nThêm tài khoản không thành công ");
+                MessageBox.Show("ERROR !!! \nAdd Account Failed ");
             }
         }
         public void UpadateAccount(string userName, int Type)
         {
             if (AccountDAO.Instance.UpdateAccount(userName, Type))
             {
-                MessageBox.Show("Cập nhật tài khoản thành công ");
+                MessageBox.Show("Account Update Successful ");
             }
             else
             {
-                MessageBox.Show("ERROR !!! \nCập nhật tài khoản không thành công ");
+                MessageBox.Show("ERROR !!! \nAdd Update Failed ");
             }
         }
         public void DeleteAccount(int idac)
         {           
             if (AccountDAO.Instance.DeleteAccount(idac))
             {
-                MessageBox.Show("Xóa tài khoản thành công ");
+                MessageBox.Show("Account Deleted Successfully");
             }
             else
             {
-                MessageBox.Show("ERROR !!! \nXóa tài khoản không thành công ");
+                MessageBox.Show("ERROR !!! \nAdd Deleted Failed ");
             }
         }
         public List<Account> SearchAccByUserName(string usernam)
@@ -97,18 +97,33 @@ namespace Code_PBL3.BUS
         {
             if(newpass != confirmpass )
             {
-                MessageBox.Show("Xác Nhận mật khẩu không hợp lệ.\nVui lòng nhập lại.......");
+                MessageBox.Show("Confirm Invalid Password.\n Please re-enter.......");
             }
             else 
             {
                 if(AccountDAO.Instance.AlterPass(EnCode(currentpass), EnCode(newpass), idacc))
                 {
-                    MessageBox.Show("Thay đổi mật khẩu thành công.......\nVui lòng đăng nhập lại!!!!!!! ");
+                    MessageBox.Show("Change password successfully.......\nPlease log in again!!!!!!! ");
                 }
                 else
                 {
-                    MessageBox.Show("Thay đổi mật khẩu không thành công.\nVui lòng nhập lại.......");
+                    MessageBox.Show("Password change failed.\nPlease re-enter.......");
                 }
+            }
+        }
+        public int GetIDStaff(int idAcc)
+        {
+            return AccountDAO.Instance.GetIDStaff(idAcc);
+        }
+        public void UpdateAccountByMe(int idac, string displayName)
+        {
+            if (AccountDAO.Instance.UpdateAccountByMe(idac, displayName))
+            {
+                MessageBox.Show("Change account information successfully ");
+            }
+            else
+            {
+                MessageBox.Show("ERROR !!! \n Change of account information failed ");
             }
         }
     }

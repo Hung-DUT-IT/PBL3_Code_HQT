@@ -70,54 +70,54 @@ namespace Code_PBL3
         void LoadAccount()
         {
             AccountList.DataSource = AccountBUS.Instance.LoadAccount();
-            dgvAcount.Columns[0].HeaderText = "Mã Tài Khoản";
-            dgvAcount.Columns[1].HeaderText = "Mã Nhân Viên";
-            dgvAcount.Columns[2].HeaderText = "Tên Đăng Nhập";
-            dgvAcount.Columns[3].HeaderText = "Tên Hiển Thị";
-            dgvAcount.Columns[4].HeaderText = "Mật Khẩu";
-            dgvAcount.Columns[5].HeaderText = "Loại Tài Khoản";
+            dgvAcount.Columns[0].HeaderText = "Account code";
+            dgvAcount.Columns[1].HeaderText = "Employee Code";
+            dgvAcount.Columns[2].HeaderText = "User Name";
+            dgvAcount.Columns[3].HeaderText = "Display Name";
+            dgvAcount.Columns[4].HeaderText = "Password";
+            dgvAcount.Columns[5].HeaderText = "Account Type";
             dgvAcount.Columns[6].Visible = false;
         }
         void LoadStaff()
         {
             StaffList.DataSource = StaffBUS.Instance.LoadStaff();
-            dgvStaff.Columns[0].HeaderText = "Mã Nhân Viên";
-            dgvStaff.Columns[1].HeaderText = "Vị Trí";
-            dgvStaff.Columns[2].HeaderText = "Tên";
-            dgvStaff.Columns[3].HeaderText = "Số Điện Thoại";
-            dgvStaff.Columns[4].HeaderText = "Ca Làm Việc";
+            dgvStaff.Columns[0].HeaderText = "Employee Code";
+            dgvStaff.Columns[1].HeaderText = "Position";
+            dgvStaff.Columns[2].HeaderText = "Name";
+            dgvStaff.Columns[3].HeaderText = "Phone";
+            dgvStaff.Columns[4].HeaderText = "Shift";
             dgvStaff.Columns[5].Visible = false;
         }
         void LoadCategory()
         {
             CategoryList.DataSource = CategoryBUS.Instance.GetListCategory();
-            dgvCategory.Columns[0].HeaderText = "Mã Danh Mục";
-            dgvCategory.Columns[1].HeaderText = "Tên Danh Mục";
+            dgvCategory.Columns[0].HeaderText = "Category Code";
+            dgvCategory.Columns[1].HeaderText = "Category Name ";
             dgvCategory.Columns[2].Visible = false;
         }
         void LoadFood()
         {
             FoodList.DataSource = FoodBUS.Instance.GetListFood();
-            dgvFood.Columns[0].HeaderText = "Mã Món Ăn";
-            dgvFood.Columns[1].HeaderText = "Tên Món Ăn";
-            dgvFood.Columns[2].HeaderText = "Mã Danh Mục";
-            dgvFood.Columns[3].HeaderText = "Giá";
+            dgvFood.Columns[0].HeaderText = "Food Code";
+            dgvFood.Columns[1].HeaderText = "Food Name";
+            dgvFood.Columns[2].HeaderText = "Category Code";
+            dgvFood.Columns[3].HeaderText = "Price";
             dgvFood.Columns[4].Visible = false;
         }
         void LoadTable()
         {
-            TableList.DataSource = TableBUS.Instance.LoadTableList();
-            dgvTable.Columns[0].HeaderText = "Mã Bàn";
-            dgvTable.Columns[1].HeaderText = "Tên Bàn";
-            dgvTable.Columns[2].HeaderText = "Mã Khu Vực";
-            dgvTable.Columns[3].HeaderText = "Trạng Thái";
+            TableList.DataSource = TableFoodBUS.Instance.LoadTableList();
+            dgvTable.Columns[0].HeaderText = "Table Code";
+            dgvTable.Columns[1].HeaderText = "Table Name";
+            dgvTable.Columns[2].HeaderText = "Area Code";
+            dgvTable.Columns[3].HeaderText = "Status";
             dgvTable.Columns[4].Visible = false;
         }
         void LoadArea()
         {
             AreaList.DataSource = AreaBUS.Instance.LoadAreaList();
-            dgvArea.Columns[0].HeaderText = "Mã Khu Vực";
-            dgvArea.Columns[1].HeaderText = "Tên Khu Vực";
+            dgvArea.Columns[0].HeaderText = "Area Code";
+            dgvArea.Columns[1].HeaderText = "Area Name";
             dgvArea.Columns[2].Visible = false;
         }
         void LoadCbbCate()
@@ -134,8 +134,8 @@ namespace Code_PBL3
         void LoadCBBIsDeleteTable()
         {
             cbbIsDelete.Items.Clear();
-            cbbIsDelete.Items.Add("Đã Xóa");
-            cbbIsDelete.Items.Add("Chưa Xóa");
+            cbbIsDelete.Items.Add("Deleted");
+            cbbIsDelete.Items.Add("Not Deleted");
             cbbIsDelete.SelectedIndex = 1;
         }
         #endregion
@@ -211,7 +211,7 @@ namespace Code_PBL3
             int idAcc = Convert.ToInt32(dgvAcount.SelectedRows[0].Cells["IdAccount"].Value);
             if (this.IdAcc.Equals(idAcc))
             {
-                MessageBox.Show("Đây là chính bạn không thể xóa tài khoản này ~~~~~~ ");
+                MessageBox.Show("********* This is you can't delete this account *********");
                 return;
             }
             else
@@ -246,7 +246,7 @@ namespace Code_PBL3
             string userName = txbNameStaff.Text;
             string Position = txbPositionStaff.Text;
             string Shift = txbShiftStaff.Text;
-            StaffBUS.Instance.Update_Staff(idStaff, userName, Position, Shift);
+            StaffBUS.Instance.UpdateStaffByAdmin(idStaff, userName, Position, Shift);
             LoadStaff(); 
         }
 
@@ -339,7 +339,7 @@ namespace Code_PBL3
             int idArea = (cbbArea.SelectedItem as Area).IDArea;
             string name = txbNameTable.Text;
             string status = txbStatusTable.Text;
-            TableBUS.Instance.AddTable(idArea,name);
+            TableFoodBUS.Instance.AddTable(idArea,name);
             LoadTable();
         }
 
@@ -359,20 +359,20 @@ namespace Code_PBL3
             {
                 isdelete = 0;
             }
-            TableBUS.Instance.UpdateTable(idTable, idArea, name, status, isdelete);
+            TableFoodBUS.Instance.UpdateTable(idTable, idArea, name, status, isdelete);
             LoadTable(); ;
         }
 
         private void btDeleteTable_Click(object sender, EventArgs e)
         {
             int idTable = Convert.ToInt32(txbIdTable.Text);
-            TableBUS.Instance.DelTable(idTable);
+            TableFoodBUS.Instance.DelTable(idTable);
             LoadTable(); 
         }
         private void btnSearchTable_Click(object sender, EventArgs e)
         {
             string name = txbSearchTable.Text;
-            dgvTable.DataSource =TableBUS.Instance.SearchTableByName(name);
+            dgvTable.DataSource =TableFoodBUS.Instance.SearchTableByName(name);
             LoadTable();
         }
         #endregion

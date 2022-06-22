@@ -35,17 +35,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txbPassWord = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.btLogin = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.btExit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lbUserName = new System.Windows.Forms.Label();
             this.txbUserName = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btLogin = new System.Windows.Forms.Button();
+            this.btExit = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -133,19 +133,6 @@
             this.label3.Size = new System.Drawing.Size(457, 2);
             this.label3.TabIndex = 9;
             // 
-            // btLogin
-            // 
-            this.btLogin.BackgroundImage = global::Code_PBL3.Properties.Resources.images__1_;
-            this.btLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btLogin.Location = new System.Drawing.Point(119, 673);
-            this.btLogin.Margin = new System.Windows.Forms.Padding(4);
-            this.btLogin.Name = "btLogin";
-            this.btLogin.Size = new System.Drawing.Size(183, 66);
-            this.btLogin.TabIndex = 3;
-            this.btLogin.UseVisualStyleBackColor = true;
-            this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
-            // 
             // label2
             // 
             this.label2.BackColor = System.Drawing.SystemColors.WindowFrame;
@@ -154,21 +141,6 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(457, 2);
             this.label2.TabIndex = 8;
-            // 
-            // btExit
-            // 
-            this.btExit.BackColor = System.Drawing.Color.White;
-            this.btExit.BackgroundImage = global::Code_PBL3.Properties.Resources.exit_183983607;
-            this.btExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btExit.Location = new System.Drawing.Point(401, 673);
-            this.btExit.Margin = new System.Windows.Forms.Padding(4);
-            this.btExit.Name = "btExit";
-            this.btExit.Size = new System.Drawing.Size(171, 66);
-            this.btExit.TabIndex = 4;
-            this.btExit.UseVisualStyleBackColor = false;
-            this.btExit.Click += new System.EventHandler(this.btExit_Click);
             // 
             // label1
             // 
@@ -200,20 +172,6 @@
             this.txbUserName.TabStop = false;
             this.txbUserName.Text = "admin";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.BackgroundImage = global::Code_PBL3.Properties.Resources._75_754395_transparent_login_icons_png_business_user_png_download;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox1.Location = new System.Drawing.Point(265, 214);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(153, 134);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -227,6 +185,48 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 15;
             this.pictureBox2.TabStop = false;
+            // 
+            // btLogin
+            // 
+            this.btLogin.BackgroundImage = global::Code_PBL3.Properties.Resources.Login;
+            this.btLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btLogin.Location = new System.Drawing.Point(119, 673);
+            this.btLogin.Margin = new System.Windows.Forms.Padding(4);
+            this.btLogin.Name = "btLogin";
+            this.btLogin.Size = new System.Drawing.Size(183, 66);
+            this.btLogin.TabIndex = 3;
+            this.btLogin.UseVisualStyleBackColor = true;
+            this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
+            // 
+            // btExit
+            // 
+            this.btExit.BackColor = System.Drawing.Color.White;
+            this.btExit.BackgroundImage = global::Code_PBL3.Properties.Resources.Logout;
+            this.btExit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btExit.Location = new System.Drawing.Point(401, 673);
+            this.btExit.Margin = new System.Windows.Forms.Padding(4);
+            this.btExit.Name = "btExit";
+            this.btExit.Size = new System.Drawing.Size(171, 66);
+            this.btExit.TabIndex = 4;
+            this.btExit.UseVisualStyleBackColor = false;
+            this.btExit.Click += new System.EventHandler(this.btExit_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.BackgroundImage = global::Code_PBL3.Properties.Resources._75_754395_transparent_login_icons_png_business_user_png_download;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureBox1.Location = new System.Drawing.Point(265, 214);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(153, 134);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
             // 
             // fLogin
             // 
@@ -242,8 +242,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fLogin_FormClosing);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

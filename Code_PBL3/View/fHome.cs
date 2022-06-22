@@ -90,7 +90,7 @@ namespace Code_PBL3
 
         private void btExit_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Ban có thật sự muốn thoát phần mềm ???", "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show("Do you really want to exit the software ???? ", "Warning", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
                 this.Close();
             }
@@ -103,7 +103,8 @@ namespace Code_PBL3
 
         private void btSetting_Click(object sender, EventArgs e)
         {
-            OpenFormChild(new fSetting(this.IdAcc));
+            int idStaff = AccountBUS.Instance.GetIDStaff(IdAcc);
+            OpenFormChild(new fSetting(this.IdAcc, idStaff));
         }
 
         #endregion

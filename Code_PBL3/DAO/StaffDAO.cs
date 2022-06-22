@@ -43,6 +43,12 @@ namespace Code_PBL3.DAO
             }
             return staff;
         }
+        public bool UpdateStaffByMe(int idStaff, string Name, string Phone)
+        {
+            string query = string.Format("Update Staff set Name='{0}',Phone ='{1}' where idStaff ={2} ", Name, Phone, idStaff);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
         public int GetMaxIDStaff()
         {
             try
@@ -55,9 +61,9 @@ namespace Code_PBL3.DAO
             }   
 
         }
-        public bool UpdateStafff(int  idStaff,string userName, string Positon, string Shift)
+        public bool UpdateStaffByAdmin(int  idStaff,string Name, string Positon, string Shift)
         {
-            string query = string.Format("Update Staff set Position ='{0}',Name='{1}',Shifts='{2}' where idStaff ={3} ",Positon,userName,Shift,idStaff);
+            string query = string.Format("Update Staff set Position ='{0}',Name='{1}',Shifts='{2}' where idStaff ={3} ",Positon, Name, Shift,idStaff);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }

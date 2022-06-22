@@ -39,23 +39,23 @@ namespace Code_PBL3.BUS
         {
             if (FoodDAO.Instance.UpdateFood(idfood, foodcategory, name, price))
             {
-                MessageBox.Show("Cập nhật món ăn thành công ");
+                MessageBox.Show("Successful Food update");
 
             }
             else
             {
-                MessageBox.Show("ERROR !!! \nCập nhật món ăn không thành công ");
+                MessageBox.Show("ERROR !!! \nFood update failed");
             }
         }
         public void AddFood(string name, int category, int price)
         {
             if (FoodDAO.Instance.AddFood(name, category, price))
             {
-                MessageBox.Show("Thêm món ăn thành công ");
+                MessageBox.Show("Successful Food Add");
             }
             else
             {
-                MessageBox.Show("ERROR !!! \nThêm món ăn không thành công ");
+                MessageBox.Show("ERROR !!! \nFood Add failed ");
             }
         }
 
@@ -64,11 +64,11 @@ namespace Code_PBL3.BUS
 
             if (FoodDAO.Instance.DeleteFood(idfood))
             {
-                MessageBox.Show("Xóa món ăn thành công ");
+                MessageBox.Show("Successful Food Delete");
             }
             else
             {
-                MessageBox.Show("ERROR !!! \nXóa món ăn không thành công ");
+                MessageBox.Show("ERROR !!! \n Food Delete failed ");
             }
         }
         public List<Food> SearchAccByName(string name)

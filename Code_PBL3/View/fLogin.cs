@@ -38,12 +38,12 @@ namespace Code_PBL3
             }
             else
             {
-                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu~!! ");
+                MessageBox.Show("Incorrect account or password !!! ");
             }
         }
         private void fLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Ban có thật sự muốn thoát chương trình ?", "Thông báo", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show("Do you really want to exit the program? ?", "Notify", MessageBoxButtons.OKCancel) != System.Windows.Forms.DialogResult.OK)
             {
                 e.Cancel = true;
             }

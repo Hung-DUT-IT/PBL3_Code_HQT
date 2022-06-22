@@ -71,5 +71,9 @@ namespace Code_PBL3.BUS
         {
             return BillDAO.Instance.DelBIll(idbill);
         }
+        public Double GetTotalSales()
+        {
+            return BillDAO.Instance.GetTotalSales();
+        }
     }
 }

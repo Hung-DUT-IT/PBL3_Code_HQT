@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Words">
+      <HintPath>..\..\..\..\Downloads\Aspose.Words.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -54,8 +57,9 @@
     <Compile Include="BUS\CustomerBUS.cs" />
     <Compile Include="BUS\FoodBUS.cs" />
     <Compile Include="BUS\MenuBillBUS.cs" />
+    <Compile Include="BUS\ReportExtensionMethod.cs" />
     <Compile Include="BUS\StaffBUS.cs" />
-    <Compile Include="BUS\TableBUS.cs" />
+    <Compile Include="BUS\TableFoodBUS.cs" />
     <Compile Include="DAO\AccountDAO.cs" />
     <Compile Include="DAO\AreaDAO.cs" />
     <Compile Include="DAO\BillDAO.cs" />
@@ -66,7 +70,7 @@
     <Compile Include="DAO\FoodDAO.cs" />
     <Compile Include="DAO\MenuBillDAO.cs" />
     <Compile Include="DAO\StaffDAO.cs" />
-    <Compile Include="DAO\TableDAO.cs" />
+    <Compile Include="DAO\TableFoodDAO.cs" />
     <Compile Include="DTO\Account.cs" />
     <Compile Include="DTO\Area.cs" />
     <Compile Include="DTO\Bill.cs" />
@@ -76,7 +80,7 @@
     <Compile Include="DTO\Food.cs" />
     <Compile Include="DTO\MenuBill.cs" />
     <Compile Include="DTO\Staff.cs" />
-    <Compile Include="DTO\Table.cs" />
+    <Compile Include="DTO\TableFood.cs" />
     <Compile Include="View\fDetachedBill.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,7 +244,9 @@
   <ItemGroup>
     <None Include="Resources\75-754395_transparent-login-icons-png-business-user-png-download.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Logout.png" />
+  </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
@@ -269,6 +275,12 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

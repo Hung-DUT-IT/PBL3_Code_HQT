@@ -34,23 +34,23 @@ namespace Code_PBL3.BUS
         {
             if (AreaDAO.Instance.AddArea(name))
             {
-                MessageBox.Show("Thêm khu vực thành công ");
+                MessageBox.Show("Add Success Area ");
             }
             else
             {
-                MessageBox.Show("ERROR !!! \nThêm khu vực không thành công ");
+                MessageBox.Show("ERROR !!! \nAdd Failed Area ");
             }
         }
         public void UpdateArea(int id, string name)
         {
             if (AreaDAO.Instance.UpdateArea(id, name))
             {
-                MessageBox.Show("Cập nhật khu vực thành công ");
+                MessageBox.Show("Area Update Successful");
 
             }
             else
             {
-                MessageBox.Show("ERROR !!! \nCập nhật khu vực không thành công ");
+                MessageBox.Show("ERROR !!! \nArea Update Failed ");
             }
         }
         public void DelArea(int id)
@@ -58,11 +58,11 @@ namespace Code_PBL3.BUS
 
             if (AreaDAO.Instance.DeleteArea(id))
             {
-                MessageBox.Show("Xóa khu vực thành công ");
+                MessageBox.Show("Delete Area Successfully");
             }
             else
             {
-                MessageBox.Show("ERROR !!! \nXóa khu vực không thành công \nKhu Vực Đang Hoạt Động");
+                MessageBox.Show("ERROR !!! \nArea Delete Failed ");
             }
         }
         public List<Area> SearchAreayName(string name)

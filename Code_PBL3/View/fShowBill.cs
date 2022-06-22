@@ -14,6 +14,8 @@ using System.Reflection;
 using System.IO;
 using System.Diagnostics;
 using Code_PBL3.BUS;
+using Aspose.Words;
+using Aspose.Words.Tables;
 
 namespace Code_PBL3
 {
@@ -41,9 +43,9 @@ namespace Code_PBL3
                 idBill = value;
             }
         }
-        private double totalPrice;
+        private float totalPrice;
 
-        public double TotalPrice
+        public float TotalPrice
         {
             get { return totalPrice; }
             set
@@ -60,7 +62,7 @@ namespace Code_PBL3
                 discount = value;
             }
         }
-        public fShowBill(int idAcc,int idbill, double totalPrice, int discount)
+        public fShowBill(int idAcc,int idbill, float totalPrice, int discount)
         {
             InitializeComponent();
             this.IdAcc = idAcc;
@@ -73,28 +75,49 @@ namespace Code_PBL3
         {
             lbIDAcc.Text = IdAcc.ToString();
             Bill bill = BillBUS.Instance.GetBillByIdBill(IdBill);
-            lbNameTable.Text = TableDAO.Instance.GetNameTableByIdBill(IdBill).ToString();
+            lbNameTable.Text = TableFoodDAO.Instance.GetNameTableByIdBill(IdBill).ToString();
             lbDateCheckIn.Text = bill.DateCheckIn.ToString();
             lbDateCheckOut.Text = DateTime.Now.ToString();
             lbTotalPrice.Text = this.TotalPrice.ToString();
             lbDissCount.Text = this.Discount.ToString();
-            double finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
+            float finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
             lbTotalEnd.Text = finalTotalPrice.ToString();
             if(txbMoneyCus.Text == "")
             {
                 lbRefund.Text = "0";
             }
-            dgvBill.DataSource = MenuBillBUS.Instance.GetListMenuByBILL(this.IdBill);
+            dgvBill.DataSource = MenuBillBUS.Instance.GetListMenuByBill(this.IdBill);
         }
 
         private void fShowBill_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Ban có muốn in hóa đơn không ?", "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            if (MessageBox.Show("Do you want to print invoices? ?", "Notify", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
                 BillDAO.Instance.CheckOut(this.IdBill, this.Discount, (float)Convert.ToDouble(lbTotalEnd.Text));
-                //CreateWordDocument(@"C:\Users\huuhu\source\repos\PBL_3_Code\Code_PBL3\BILL", @"C:C:\Users\huuhu\source\repos\PBL_3_Code\Code_PBL3\BILL\Hoa Don" + this.IdBill + ".docx");
-                //Process.Start(@"C:C:\Users\huuhu\source\repos\PBL_3_Code\Code_PBL3\BILL\Hoa Don" + this.IdBill + ".docx");             
-                e.Cancel = false;
+                Document involve = new Document(@"C:\Users\huuhu\source\repos\PBL3_Code_HQT\Code_PBL3\BILL\Billdemox.doc");
+                involve.MailMerge.Execute(new[] { "ID_Bill" }, new[] { IdBill.ToString() });
+                involve.MailMerge.Execute(new[] { "TableName" }, new[] { lbNameTable.Text });
+                involve.MailMerge.Execute(new[] { "DateCheckIn" }, new[] { lbDateCheckIn.Text });
+                involve.MailMerge.Execute(new[] { "DateCheckOut" }, new[] { lbDateCheckOut.Text });
+                Table InvolveDetail = involve.GetChild(NodeType.Table, 1, true) as Table;
+                int HangHienTai = 1;
+                InvolveDetail.InsertRows(HangHienTai, HangHienTai, dgvBill.RowCount - 1); // thêm hàng ( hàng = billfor -1)
+                for (int i = 0; i < dgvBill.RowCount; i++)
+                {
+                    InvolveDetail.PutValue(HangHienTai, 0, i.ToString());
+                    InvolveDetail.PutValue(HangHienTai, 1, dgvBill.Rows[i].Cells[0].Value.ToString());
+                    InvolveDetail.PutValue(HangHienTai, 2, dgvBill.Rows[i].Cells[1].Value.ToString());
+                    InvolveDetail.PutValue(HangHienTai, 3, dgvBill.Rows[i].Cells[2].Value.ToString());
+                    InvolveDetail.PutValue(HangHienTai, 4, dgvBill.Rows[i].Cells[3].Value.ToString());
+                    HangHienTai++;
+                }
+                involve.MailMerge.Execute(new[] { "TotalPrice" }, new[] { lbTotalPrice.Text });
+                involve.MailMerge.Execute(new[] { "Discount" }, new[] { lbDissCount.Text });
+                involve.MailMerge.Execute(new[] { "finalTotalPrice" }, new[] { lbTotalEnd.Text });
+                involve.MailMerge.Execute(new[] { "GuestGive" }, new[] { txbMoneyCus.Text });
+                /*involve.MailMerge.Execute(new[] { "refunds" }, new[] { lbDateCheckOut.Text });*/
+                involve.SaveAndOpenFile("Bill " + this.IdBill + ".doc");
+                e.Cancel = false;   
             }
 
             else
@@ -103,65 +126,7 @@ namespace Code_PBL3
                 e.Cancel = false;
             }
         }
-        private void FindAndReplace(Word.Application wordApp, object ToFindText, object replacewithText)
-        {
-            object matchCase = true;
-            object matchWholeword = true;
-            object matchWildCards = false;
-            object matchSoundLike = false;
-            object nmatchAllforms = false;
-            object forward = true;
-            object format = false;
-            object matchkashida = false;
-            object matchDiactitics = false;
-            object matchAlefHamza = false;
-            object matchControl = false;
-            object read_only = false;
-            object visible = true;
-            object replace = 2;
-            object wrap = 1;
-
-            wordApp.Selection.Find.Execute(ref ToFindText,
-                ref matchCase, ref matchWholeword,
-                ref matchWildCards, ref matchSoundLike,
-                ref nmatchAllforms, ref forward,
-                ref wrap, ref format, ref replacewithText,
-                ref replace, ref matchkashida,
-                ref matchDiactitics, ref matchAlefHamza,
-                ref matchControl);
-        }
-        private void CreateWordDocument(object filename, object SaveAs)
-        {
-            Word.Application wordApp = new Word.Application();
-            object missing = Missing.Value;
-            Word.Document myWordDoc = null;
-            if (File.Exists((string)filename))
-            {
-                object readOnly = false;
-                object isVisible = false;
-                wordApp.Visible = false;
-                myWordDoc = wordApp.Documents.Open(ref filename, ref missing, ref readOnly,
-                                                   ref missing, ref missing, ref missing,
-                                                   ref missing, ref missing, ref missing,
-                                                   ref missing, ref missing, ref missing,
-                                                   ref missing, ref missing, ref missing, ref missing);
-                myWordDoc.Activate();
-                this.FindAndReplace(wordApp, "<ID_Bill>", this.IdBill);
-                this.FindAndReplace(wordApp, "<TableName>", lbNameTable.Text);
-                this.FindAndReplace(wordApp, "<DateCheckIn>", lbDateCheckIn.Text);
-                this.FindAndReplace(wordApp, "<DateCheckOut>", lbDateCheckOut.Text);
-            }
-            else
-            {
-                MessageBox.Show("File not found");
-            }
-            myWordDoc.SaveAs2(ref SaveAs, ref missing, ref missing, ref missing,
-                                    ref missing, ref missing, ref missing,
-                                    ref missing, ref missing, ref missing,
-                                    ref missing, ref missing, ref missing,
-                                    ref missing, ref missing, ref missing);
-            myWordDoc.Close();
-            wordApp.Quit();
-        }
+        
+            
     }
 }

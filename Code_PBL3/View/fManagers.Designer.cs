@@ -234,7 +234,7 @@
             this.panel3.Location = new System.Drawing.Point(901, 2);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(976, 665);
+            this.panel3.Size = new System.Drawing.Size(983, 679);
             this.panel3.TabIndex = 2;
             // 
             // txbIDStaffInAc
@@ -404,10 +404,10 @@
             this.panel2.Controls.Add(this.btDelAccount);
             this.panel2.Controls.Add(this.btUpdateAccount);
             this.panel2.Controls.Add(this.btAddAccount);
-            this.panel2.Location = new System.Drawing.Point(901, 673);
+            this.panel2.Location = new System.Drawing.Point(902, 679);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(976, 110);
+            this.panel2.Size = new System.Drawing.Size(982, 110);
             this.panel2.TabIndex = 1;
             // 
             // btShow
@@ -423,7 +423,7 @@
             // 
             // btDelAccount
             // 
-            this.btDelAccount.Location = new System.Drawing.Point(749, 12);
+            this.btDelAccount.Location = new System.Drawing.Point(751, 12);
             this.btDelAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btDelAccount.Name = "btDelAccount";
             this.btDelAccount.Size = new System.Drawing.Size(225, 82);
@@ -463,7 +463,7 @@
             this.panel1.Location = new System.Drawing.Point(5, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(901, 780);
+            this.panel1.Size = new System.Drawing.Size(901, 787);
             this.panel1.TabIndex = 0;
             // 
             // dgvAcount
@@ -479,7 +479,7 @@
             this.dgvAcount.RowHeadersWidth = 51;
             this.dgvAcount.RowTemplate.Height = 24;
             this.dgvAcount.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAcount.Size = new System.Drawing.Size(895, 776);
+            this.dgvAcount.Size = new System.Drawing.Size(895, 783);
             this.dgvAcount.TabIndex = 0;
             // 
             // tabPage2

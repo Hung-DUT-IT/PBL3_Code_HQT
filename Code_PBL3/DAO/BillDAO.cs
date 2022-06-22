@@ -91,5 +91,16 @@ namespace Code_PBL3.DAO
             int ressult = DataProvider.Instance.ExecuteNonQuery(query);
             return ressult > 0;
         }
+        public Double GetTotalSales()
+        {
+            try
+            {
+                return (Double)DataProvider.Instance.ExecuteSaclar("select SUM(TotalPrice) from Bill ");
+            }
+            catch
+            {
+                return -1;
+            }
+        }
     }
 }

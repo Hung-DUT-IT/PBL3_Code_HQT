@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,8 @@ namespace Code_PBL3
             InitializeComponent();
             LoadDateTimePickerBill(); 
             LoadDGV();
+            CultureInfo culture = new CultureInfo("vi-VN");
+            txbTotalSales.Text = BillBUS.Instance.GetTotalSales().ToString("c", culture);
         }
         void LoadDGV()
         {

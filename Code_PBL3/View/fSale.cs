@@ -49,12 +49,12 @@ namespace Code_PBL3
         void LoadTable(string nameArea = "All")
         {
             flpTable.Controls.Clear();            
-            List<Table> tablelist = TableBUS.Instance.LoadTableListByArea(nameArea);
-            foreach (Table item in tablelist)
+            List<TableFood> tablelist = TableFoodBUS.Instance.LoadTableListByArea(nameArea);
+            foreach (TableFood item in tablelist)
             {
                 if(item.IsDeleted == 0)
                 {
-                    Button btn = new Button() { Width = (int)TableBUS.TableWidth, Height = (int)TableBUS.TableHeight };
+                    Button btn = new Button() { Width = (int)TableFoodBUS.TableWidth, Height = (int)TableFoodBUS.TableHeight };
                     btn.Text = item.NameTable + Environment.NewLine + item.Status;
                     btn.Click += Btn_ClickTable;
                     btn.Tag = item;
@@ -99,11 +99,11 @@ namespace Code_PBL3
                 totalPrice += float.Parse(dgvBill.Rows[i].Cells["TotalPrice"].Value.ToString());
             }
             CultureInfo culture = new CultureInfo("vi-VN");
-            txbTotalPrice.Text = totalPrice.ToString("c", culture);
+            txbTotalPrice.Text = totalPrice.ToString("f", culture);
         }
        void LoadCBBTable()
         {
-            cbbCTable.DataSource = TableBUS.Instance.LoadTableList();
+            cbbCTable.DataSource = TableFoodBUS.Instance.LoadTableList();
             cbbCTable.DisplayMember = "NameTable";
         }
         #endregion
@@ -126,10 +126,10 @@ namespace Code_PBL3
         }
         private void btAddFood_Click(object sender, EventArgs e)
         {
-            Table table = dgvBill.Tag as Table;
+            TableFood table = dgvBill.Tag as TableFood;
             if (table == null)
             {
-                MessageBox.Show("Hãy Chọn Bàn !!");
+                MessageBox.Show("Please Choose A Table!!");
                 return;
             }
             int idBill = BillBUS.Instance.GetUnCheckBillIDByTableID(table.IdTable);
@@ -150,8 +150,8 @@ namespace Code_PBL3
         }
         private void Btn_ClickTable(object sender, EventArgs e)
         {
-            int TableID = ((sender as Button).Tag as Table).IdTable;
-            lbNameTable.Text = ((sender as Button).Tag as Table).NameTable;
+            int TableID = ((sender as Button).Tag as TableFood).IdTable;
+            lbNameTable.Text = ((sender as Button).Tag as TableFood).NameTable;
             dgvBill.Tag = (sender as Button).Tag;
             int idbill = BillBUS.Instance.GetUnCheckBillIDByTableID(TableID);
             if(BillBUS.Instance.GetBillByIdBill(idbill) == null )
@@ -176,9 +176,10 @@ namespace Code_PBL3
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Table table = dgvBill.Tag as Table;
+            TableFood table = dgvBill.Tag as TableFood;
             if (table == null)
             {
+                MessageBox.Show("Please Choose A Table !!");
                 return;
             }
             Customer cus = CustomerBUS.Instance.GetCusByPhone(txbPhoneCus.Text.ToString());
@@ -186,13 +187,13 @@ namespace Code_PBL3
             int TableID = table.IdTable;
             int idBill = BillBUS.Instance.GetUnCheckBillIDByTableID(TableID);
             int discount = (int)nmDiscount.Value;
-            double totalPrice = Convert.ToDouble(txbTotalPrice.Text.Split(',')[0]);
-            double finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
+            float totalPrice = float.Parse(txbTotalPrice.Text.Split(',')[0]);
+            float finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
             if (idBill != -1)
             {
-                if (MessageBox.Show("Ban có chắc chắn muốn tính tiền không ?", "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                if (MessageBox.Show("Are you sure you want to charge ?? ", "Notify", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    fShowBill f1 = new fShowBill(this.IdAcc, idBill, totalPrice, discount);
+                    fShowBill f1 = new fShowBill(this.IdAcc, idBill, finalTotalPrice, discount);
                     this.Hide();
                     f1.ShowDialog();
                     ShowBill(idBill);
@@ -202,7 +203,7 @@ namespace Code_PBL3
             }
             else
             {
-                MessageBox.Show("Vui Lòng chọn món");
+                MessageBox.Show("Please Choose A Dish");
             }
         }
 
@@ -211,6 +212,7 @@ namespace Code_PBL3
             Customer cus = null;
             if (txbPhoneCus.Text == "")
             {
+                MessageBox.Show("Please Enter Information(Customer Chone Number)!!");
                 return;
             }
             else
@@ -219,11 +221,11 @@ namespace Code_PBL3
                 cus = CustomerBUS.Instance.GetCusByPhone(phone);
                 if (cus == null)
                 {
-                    MessageBox.Show("KH Chưa Tồn tại");
+                    MessageBox.Show("Customers Don't Exist");
                 }
                 else
                 {
-                    MessageBox.Show("KH Đã Tồn tại");
+                    MessageBox.Show("Existing Customers");
                     if (cus.Point >= 200 && cus.Point < 500)
                     {
                         nmDiscount.Value = 2;
@@ -249,24 +251,30 @@ namespace Code_PBL3
             string Phone = txbPhoneCus.Text.ToString();
             if (Name == "" || Phone == "")
             {
-                MessageBox.Show("Vui Lòng Nhập Thông Tin");
+                MessageBox.Show("Please Enter Information");
             }
             else
             {
                 if (CustomerBUS.Instance.InserterCus(Name, Phone))
                 {
-                    MessageBox.Show("Khách Hàng Đã Được Them Vào Hệ Thống");
+                    MessageBox.Show("Customer Has Been Added To The System");
                 }
             }
         }
 
         private void btSwitchTable_Click(object sender, EventArgs e)
         {
-            int idTable1 = (dgvBill.Tag as Table).IdTable;
-            int idTable2 = (cbbCTable.SelectedItem as Table).IdTable;
-            if (MessageBox.Show(String.Format("Bạn có thực sự muốn chuyển bàn {0} qua bàn {1} ??", (dgvBill.Tag as Table).NameTable, (cbbCTable.SelectedItem as Table).NameTable), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            TableFood table = dgvBill.Tag as TableFood;
+            if (table == null)
             {
-                TableBUS.Instance.SwitchTable(idTable1, idTable2, this.IdAcc, DateTime.Now);
+                MessageBox.Show("Please Choose A Table!!");
+                return;
+            }
+            int idTable1 = table.IdTable;
+            int idTable2 = (cbbCTable.SelectedItem as TableFood).IdTable;
+            if (MessageBox.Show(String.Format("Do you really want to move table {0} to table {1} ?? ", (dgvBill.Tag as TableFood).NameTable, (cbbCTable.SelectedItem as TableFood).NameTable), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                TableFoodBUS.Instance.SwitchTable(idTable1, idTable2, this.IdAcc, DateTime.Now);
                 LoadTable();
             }
         }
@@ -274,14 +282,14 @@ namespace Code_PBL3
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Table table = dgvBill.Tag as Table;
+            TableFood table = dgvBill.Tag as TableFood;
             if (table == null)
             {
-                MessageBox.Show("Hãy Chọn Bàn !!");
+                MessageBox.Show("Please Choose A Table !!");
                 return;
             }
-            int idTable2 = (cbbCTable.SelectedItem as Table).IdTable;
-            if (MessageBox.Show(String.Format("Bạn có thực sự muốn chuyển bàn {0} qua bàn {1} ??", (dgvBill.Tag as Table).NameTable, (cbbCTable.SelectedItem as Table).NameTable), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            int idTable2 = (cbbCTable.SelectedItem as TableFood).IdTable;
+            if (MessageBox.Show(String.Format("Do you really want to split the bill from table {0} to table {1} ?? ", (dgvBill.Tag as TableFood).NameTable, (cbbCTable.SelectedItem as TableFood).NameTable), "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
                 fDetachedBill fx = new fDetachedBill(table.IdTable, idTable2, this.IdAcc);
                 fx.d = new fDetachedBill.Mydel(LoadTable);
