@@ -54,7 +54,7 @@ namespace Code_PBL3.DAO
         }
         public bool AddFood(string name, int idcategory, int price)
         {
-            string query = String.Format("insert into Food values ({0},'{1}',{2})", idcategory, name, price);
+            string query = String.Format("insert into Food values ({0},'{1}',{2},0)", idcategory, name, price);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }

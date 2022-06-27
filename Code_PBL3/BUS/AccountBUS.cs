@@ -43,7 +43,7 @@ namespace Code_PBL3.BUS
         }
         public void AddAccount(string userName, string DisplayName, int Type, string pass)
         {
-            if (AccountDAO.Instance.InsertAccount(userName, DisplayName, Type, pass))
+            if (AccountDAO.Instance.InsertAccount(userName, DisplayName, Type, EnCode(pass) ))
             {
                 MessageBox.Show("Successfully Added Account");
             }

@@ -134,8 +134,8 @@ namespace Code_PBL3
         void LoadCBBIsDeleteTable()
         {
             cbbIsDelete.Items.Clear();
-            cbbIsDelete.Items.Add("Deleted");
-            cbbIsDelete.Items.Add("Not Deleted");
+            cbbIsDelete.Items.Add("Đã Xóa");
+            cbbIsDelete.Items.Add("Chưa Xóa");
             cbbIsDelete.SelectedIndex = 1;
         }
         #endregion
@@ -184,154 +184,304 @@ namespace Code_PBL3
         #region Events TabAccount
         private void btShow_Click_1(object sender, EventArgs e)
         {
-            dgvAcount.DataSource = AccountBUS.Instance.LoadAccount();
-            LoadAccount();
+            AccountList.DataSource = AccountBUS.Instance.LoadAccount();
         }
 
         private void btAddAccount_Click_1(object sender, EventArgs e)
         {
-            string userName = txbUserName.Text;
-            string pass = txbPass.Text;
-            string displayName = txbDisplayName.Text;
-            int type = (int)nmTypeAccount.Value;
-            AccountBUS.Instance.AddAccount(userName, displayName, type, pass);
-            LoadAccount();
+            try
+            {
+                string userName = txbUserName.Text;
+                string pass = txbPass.Text;
+                string displayName = txbDisplayName.Text;
+                int type = (int)nmTypeAccount.Value;
+                AccountBUS.Instance.AddAccount(userName, displayName, type, pass);
+                LoadAccount();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btUpdateAccount_Click_1(object sender, EventArgs e)
         {
-            string userName = txbUserName.Text;
-            int type = (int)nmTypeAccount.Value;
-            AccountBUS.Instance.UpadateAccount(userName, type);
-            LoadAccount();
+            try
+            {
+                string userName = txbUserName.Text;
+                int type = (int)nmTypeAccount.Value;
+                AccountBUS.Instance.UpadateAccount(userName, type);
+                LoadAccount();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void btDelAccount_Click_1(object sender, EventArgs e)
         {
-            int idAcc = Convert.ToInt32(dgvAcount.SelectedRows[0].Cells["IdAccount"].Value);
-            if (this.IdAcc.Equals(idAcc))
+            try
             {
-                MessageBox.Show("********* This is you can't delete this account *********");
-                return;
+                int idAcc = Convert.ToInt32(dgvAcount.SelectedRows[0].Cells["IdAccount"].Value);
+                if (this.IdAcc.Equals(idAcc))
+                {
+                    MessageBox.Show("********* This is you can't delete this account *********");
+                    return;
+                }
+                else
+                {
+                    int idac = Convert.ToInt32(txbIdAccount.Text);
+                    AccountBUS.Instance.DeleteAccount(idac);
+                }
+                LoadAccount();
             }
-            else
+            catch (Exception ex)
             {
-                int idac = Convert.ToInt32(txbIdAccount.Text);
-                AccountBUS.Instance.DeleteAccount(idac);
+                MessageBox.Show(ex.Message);
             }
-            LoadAccount(); 
+             
         }
 
         private void btSearhAccount_Click_1(object sender, EventArgs e)
         {
-            dgvAcount.DataSource = AccountBUS.Instance.SearchAccByUserName(txbSearchAcount.Text);
-
-            LoadAccount(); 
+            try
+            {
+                if(txbSearchAcount.Text != "" && txbSearchAcount.Text != null )
+                {
+                    AccountList.DataSource = AccountBUS.Instance.SearchAccByUserName(txbSearchAcount.Text);
+                }
+                else
+                {
+                    MessageBox.Show("Vui Lòng Giá Trị Tìm Kiếm !!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         #endregion
         #region Events TabStaff
         private void bntAddStaff_Click_1(object sender, EventArgs e)
         {
-            string name = txbNameStaff.Text;
-            string phone = txbPhoneStaff.Text;
-            string position = txbPositionStaff.Text;
-            string shift = txbShiftStaff.Text;
-            StaffBUS.Instance.AddStaff(name, phone, position, shift);
-            LoadStaff();
+            try
+            {
+                string name = txbNameStaff.Text;
+                string phone = txbPhoneStaff.Text;
+                string position = txbPositionStaff.Text;
+                string shift = txbShiftStaff.Text;
+                StaffBUS.Instance.AddStaff(name, phone, position, shift);
+                LoadStaff();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void updateStaff_Click_1(object sender, EventArgs e)
         {
-            int idStaff = Convert.ToInt32(txbidStaff.Text);
-            string userName = txbNameStaff.Text;
-            string Position = txbPositionStaff.Text;
-            string Shift = txbShiftStaff.Text;
-            StaffBUS.Instance.UpdateStaffByAdmin(idStaff, userName, Position, Shift);
-            LoadStaff(); 
+            try
+            {
+                int idStaff = Convert.ToInt32(txbidStaff.Text);
+                string userName = txbNameStaff.Text;
+                string Position = txbPositionStaff.Text;
+                string Shift = txbShiftStaff.Text;
+                StaffBUS.Instance.UpdateStaffByAdmin(idStaff, userName, Position, Shift);
+                LoadStaff();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void btDelStaff_Click_1(object sender, EventArgs e)
         {
-            int idstaff = Convert.ToInt32(txbidStaff.Text);
-            StaffBUS.Instance.DelStafff(idstaff);
-            LoadStaff();
+            try
+            {
+                int idstaff = Convert.ToInt32(txbidStaff.Text);
+                StaffBUS.Instance.DelStafff(idstaff);
+                LoadStaff();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }   
         }
 
         private void bntShow_Click_1(object sender, EventArgs e)
         {
-            dgvStaff.DataSource = StaffBUS.Instance.LoadStaff();
-            
-            LoadStaff(); 
+            StaffList.DataSource = StaffBUS.Instance.LoadStaff();
         }
 
         private void bntSearchStaff_Click_1(object sender, EventArgs e)
         {
-            dgvStaff.DataSource = StaffBUS.Instance.SearchStaffByName(txbsearchStaff.Text);
-            LoadStaff();
+            try
+            {
+                if (txbsearchStaff.Text != "" && txbsearchStaff.Text != null)
+                {
+                    StaffList.DataSource = StaffBUS.Instance.SearchStaffByName(txbsearchStaff.Text);
+                }
+                else
+                {
+                    MessageBox.Show("Vui Lòng Giá Trị Tìm Kiếm !!");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            } 
+            
         }
         #endregion
         #region Events TabCategory
         private void btAddCategory_Click(object sender, EventArgs e)
         {
-            string name = txtNameCategory.Text;
-            CategoryBUS.Instance.AddCategory(name);
-            LoadCategory();
+            try
+            {
+                string name = txtNameCategory.Text;
+                CategoryBUS.Instance.AddCategory(name);
+                LoadCategory();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }   
         }
 
         private void btUpdateCategory_Click(object sender, EventArgs e)
         {
-            int idcategory = Convert.ToInt32(txbIDCategory.Text);
-            string name = txtNameCategory.Text;
-            CategoryBUS.Instance.UpdateCategory(idcategory, name);
-            LoadCategory();
+            try
+            {
+                int idcategory = Convert.ToInt32(txbIDCategory.Text);
+                string name = txtNameCategory.Text;
+                CategoryBUS.Instance.UpdateCategory(idcategory, name);
+                LoadCategory();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }  
         }
 
         private void btDeleteCategory_Click(object sender, EventArgs e)
         {
-            int idcategory = Convert.ToInt32(txbIDCategory.Text);
-            CategoryBUS.Instance.DelCategory(idcategory);
-            LoadCategory();
+            try
+            {
+                int idcategory = Convert.ToInt32(txbIDCategory.Text);
+                CategoryBUS.Instance.DelCategory(idcategory);
+                LoadCategory();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
         private void btnSearchCategory_Click_1(object sender, EventArgs e)
         {
-            string name = txbSearchCategory.Text;
-            dgvCategory.DataSource = CategoryBUS.Instance.SearchCategoryByName(name);
-            LoadCategory();
+            try
+            {
+                if (txbSearchCategory.Text != "" && txbSearchCategory.Text != null)
+                {
+                    string name = txbSearchCategory.Text;
+                    CategoryList.DataSource = CategoryBUS.Instance.SearchCategoryByName(name);
+                }
+                else
+                {
+                    MessageBox.Show("Vui Lòng Giá Trị Tìm Kiếm !!");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
+        }
+        private void btShowCategory_Click(object sender, EventArgs e)
+        {
+            CategoryList.DataSource = CategoryBUS.Instance.GetListCategory();
         }
         #endregion
         #region Events TabFood
         private void btAddFood_Click_1(object sender, EventArgs e)
         {
-            string name = txbNameFood.Text;
-            int categoryiD = (cbbNameCategory.SelectedItem as Category).IDCategory;
-            int price = Convert.ToInt32(nmFoodPrice.Value);
-            FoodBUS.Instance.AddFood(name, categoryiD, price);
-            LoadFood();
+            try
+            {
+                string name = txbNameFood.Text;
+                int categoryiD = (cbbNameCategory.SelectedItem as Category).IDCategory;
+                int price = Convert.ToInt32(nmFoodPrice.Value);
+                FoodBUS.Instance.AddFood(name, categoryiD, price);
+                LoadFood();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void btUpdateFood_Click_1(object sender, EventArgs e)
         {
-            int idfood = Convert.ToInt32(txbIDFood.Text);
-            string name = txbNameFood.Text;
-            int price = Convert.ToInt32(nmFoodPrice.Value);
-            int categoryiD = (cbbNameCategory.SelectedItem as Category).IDCategory;
-            FoodBUS.Instance.UpdateFood(idfood, categoryiD, name, price);
-            LoadFood(); 
+            try
+            {
+                int idfood = Convert.ToInt32(txbIDFood.Text);
+                string name = txbNameFood.Text;
+                int price = Convert.ToInt32(nmFoodPrice.Value);
+                int categoryiD = (cbbNameCategory.SelectedItem as Category).IDCategory;
+                FoodBUS.Instance.UpdateFood(idfood, categoryiD, name, price);
+                LoadFood();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }           
         }
 
         private void btDeleteFod_Click_1(object sender, EventArgs e)
         {
-            int idfood = Convert.ToInt32(txbIDFood.Text);
-            FoodBUS.Instance.DelFood(idfood);
-            LoadFood();
+            try
+            {
+                int idfood = Convert.ToInt32(txbIDFood.Text);
+                FoodBUS.Instance.DelFood(idfood);
+                LoadFood();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
         private void btSearchF_Click(object sender, EventArgs e)
         {
-            string name = txbSearchFood.Text;
-            dgvFood.DataSource = FoodBUS.Instance.SearchAccByName(name);
-            LoadFood();
+            try
+            {
+                if (txbSearchFood.Text != "" && txbSearchFood.Text != null)
+                {
+                    string name = txbSearchFood.Text;
+                    FoodList.DataSource = FoodBUS.Instance.SearchAccByName(name);
+                }
+                else
+                {
+                    MessageBox.Show("Vui Lòng Giá Trị Tìm Kiếm !!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
         }
-
+        private void btnShowFood_Click(object sender, EventArgs e)
+        {
+            FoodList.DataSource = FoodBUS.Instance.GetListFood();
+        }
         #endregion
         #region Events TabTable
         private void btAddTable_Click(object sender, EventArgs e)
@@ -339,71 +489,154 @@ namespace Code_PBL3
             int idArea = (cbbArea.SelectedItem as Area).IDArea;
             string name = txbNameTable.Text;
             string status = txbStatusTable.Text;
-            TableFoodBUS.Instance.AddTable(idArea,name);
+            TableFoodBUS.Instance.AddTable(idArea, name);
             LoadTable();
+            /*try
+            {
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }*/
+            
         }
 
         private void btUpdateTable_Click(object sender, EventArgs e)
         {
-            int idTable = Convert.ToInt32(txbIdTable.Text);
-            // lay tu cbb 
-            int idArea = (cbbArea.SelectedItem as Area).IDArea ;
-            string name = txbNameTable.Text;
-            string status = txbStatusTable.Text;
-            int isdelete;
-            if (cbbIsDelete.SelectedIndex == 0 )
+            try
             {
-                isdelete = 1;
+                int idTable = Convert.ToInt32(txbIdTable.Text);
+                int idArea = (cbbArea.SelectedItem as Area).IDArea;
+                string name = txbNameTable.Text;
+                string status = txbStatusTable.Text;
+                int isdelete;
+                if (cbbIsDelete.SelectedIndex == 0)
+                {
+                    isdelete = 1;
+                }
+                else
+                {
+                    isdelete = 0;
+                }
+                TableFoodBUS.Instance.UpdateTable(idTable, idArea, name, status, isdelete);
+                LoadTable();
             }
-            else
+            catch (Exception ex)
             {
-                isdelete = 0;
-            }
-            TableFoodBUS.Instance.UpdateTable(idTable, idArea, name, status, isdelete);
-            LoadTable(); ;
+                MessageBox.Show(ex.Message);
+            } 
         }
 
         private void btDeleteTable_Click(object sender, EventArgs e)
         {
-            int idTable = Convert.ToInt32(txbIdTable.Text);
-            TableFoodBUS.Instance.DelTable(idTable);
-            LoadTable(); 
+            try
+            {
+                int idTable = Convert.ToInt32(txbIdTable.Text);
+                TableFoodBUS.Instance.DelTable(idTable);
+                LoadTable();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
         private void btnSearchTable_Click(object sender, EventArgs e)
         {
-            string name = txbSearchTable.Text;
-            dgvTable.DataSource =TableFoodBUS.Instance.SearchTableByName(name);
-            LoadTable();
+            try
+            {
+                if (txbSearchTable.Text != "" && txbSearchTable.Text != null)
+                {
+                    string name = txbSearchTable.Text;
+                    TableList.DataSource = TableFoodBUS.Instance.SearchTableByName(name);
+                }
+                else
+                {
+                    MessageBox.Show("Vui Lòng Giá Trị Tìm Kiếm !!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
+        }
+        private void btShowTable_Click(object sender, EventArgs e)
+        {
+            TableList.DataSource = TableFoodBUS.Instance.LoadTableList();
         }
         #endregion
         #region Events TabArea
         private void btAddArea_Click(object sender, EventArgs e)
         {
-            string name = txbNameArea.Text;
-            AreaBUS.Instance.AddArea(name);
-            LoadArea();
+            try
+            {
+                string name = txbNameArea.Text;
+                AreaBUS.Instance.AddArea(name);
+                LoadArea();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void btUpdateArea_Click(object sender, EventArgs e)
         {
-            int idArea = Convert.ToInt32(txbIdArea.Text);
-            string name = txbNameArea.Text;
-            AreaBUS.Instance.UpdateArea(idArea, name);
-            LoadArea();
+            try
+            {
+                int idArea = Convert.ToInt32(txbIdArea.Text);
+                string name = txbNameArea.Text;
+                AreaBUS.Instance.UpdateArea(idArea, name);
+                LoadArea();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         private void btDeleteArea_Click(object sender, EventArgs e)
         {
-            int idArea = Convert.ToInt32(txbIdArea.Text);
-            AreaBUS.Instance.DelArea(idArea);
-            LoadArea();
+            try
+            {
+                int idArea = Convert.ToInt32(txbIdArea.Text);
+                AreaBUS.Instance.DelArea(idArea);
+                LoadArea();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void btnSearchArea_Click(object sender, EventArgs e)
         {
-            string name = txbSearchArea.Text;
-            dgvArea.DataSource = AreaBUS.Instance.SearchAreayName(name);
-            LoadArea();
+            try
+            {
+                if (txbSearchArea.Text != "" && txbSearchArea.Text != null)
+                {
+                    string name = txbSearchArea.Text;
+                    AreaList.DataSource = AreaBUS.Instance.SearchAreayName(name);
+                }
+                else
+                {
+                    MessageBox.Show("Vui Lòng Giá Trị Tìm Kiếm !!");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AreaList.DataSource = AreaBUS.Instance.LoadAreaList();
+        }
+
         #endregion
     }
 }

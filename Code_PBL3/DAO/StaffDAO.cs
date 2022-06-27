@@ -34,7 +34,7 @@ namespace Code_PBL3.DAO
         public List<Staff> LoadStaff()
         {
             List<Staff> staff = new List<Staff>();
-            string query = "select * from Staff ";
+            string query = "select * from Staff where IsDeleted = 0";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {
@@ -75,7 +75,7 @@ namespace Code_PBL3.DAO
         }
         public bool InsertStaff(string name ,string Phone , string Position,string Shift)
         {
-            string query = string.Format("insert into Staff values ('{0}','{1}','{2}','{3}')", Position, name, Phone, Shift);
+            string query = string.Format("insert into Staff values ('{0}','{1}','{2}','{3}',0)", Position, name, Phone, Shift);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }

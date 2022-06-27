@@ -42,6 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txbIdStaff = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txbTypeAccount = new System.Windows.Forms.TextBox();
@@ -55,6 +56,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txbIdAccount = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
@@ -65,18 +67,16 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txbCurrentPass = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tabcontolSetting.SuspendLayout();
             this.tabPInformationStaff.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -106,7 +106,6 @@
             this.tabPInformationStaff.Size = new System.Drawing.Size(1729, 690);
             this.tabPInformationStaff.TabIndex = 0;
             this.tabPInformationStaff.Text = "Personal Information";
-            this.tabPInformationStaff.Click += new System.EventHandler(this.tabPInformationStaff_Click);
             // 
             // panel1
             // 
@@ -145,6 +144,7 @@
             // txbShift
             // 
             this.txbShift.BackColor = System.Drawing.Color.Bisque;
+            this.txbShift.Enabled = false;
             this.txbShift.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbShift.ForeColor = System.Drawing.Color.Chocolate;
             this.txbShift.Location = new System.Drawing.Point(485, 268);
@@ -212,6 +212,7 @@
             // txbPosition
             // 
             this.txbPosition.BackColor = System.Drawing.Color.Bisque;
+            this.txbPosition.Enabled = false;
             this.txbPosition.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbPosition.ForeColor = System.Drawing.Color.Chocolate;
             this.txbPosition.Location = new System.Drawing.Point(485, 164);
@@ -235,6 +236,7 @@
             // txbIdStaff
             // 
             this.txbIdStaff.BackColor = System.Drawing.Color.Bisque;
+            this.txbIdStaff.Enabled = false;
             this.txbIdStaff.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbIdStaff.ForeColor = System.Drawing.Color.Chocolate;
             this.txbIdStaff.Location = new System.Drawing.Point(485, 68);
@@ -254,6 +256,18 @@
             this.label1.Size = new System.Drawing.Size(115, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID Staff";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::Code_PBL3.Properties.Resources.icon_login1;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(728, 684);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
             // 
             // tabPage2
             // 
@@ -291,6 +305,7 @@
             // txbTypeAccount
             // 
             this.txbTypeAccount.BackColor = System.Drawing.Color.Bisque;
+            this.txbTypeAccount.Enabled = false;
             this.txbTypeAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbTypeAccount.ForeColor = System.Drawing.Color.Chocolate;
             this.txbTypeAccount.Location = new System.Drawing.Point(474, 487);
@@ -307,9 +322,9 @@
             this.label10.ForeColor = System.Drawing.Color.Chocolate;
             this.label10.Location = new System.Drawing.Point(194, 493);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(220, 32);
+            this.label10.Size = new System.Drawing.Size(199, 32);
             this.label10.TabIndex = 19;
-            this.label10.Text = "Loại Tài Khoản";
+            this.label10.Text = "Type Account";
             // 
             // txbDisplayName
             // 
@@ -349,6 +364,7 @@
             // txbPass
             // 
             this.txbPass.BackColor = System.Drawing.Color.Bisque;
+            this.txbPass.Enabled = false;
             this.txbPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbPass.ForeColor = System.Drawing.Color.Chocolate;
             this.txbPass.Location = new System.Drawing.Point(474, 279);
@@ -373,6 +389,7 @@
             // txbUserName
             // 
             this.txbUserName.BackColor = System.Drawing.Color.Bisque;
+            this.txbUserName.Enabled = false;
             this.txbUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbUserName.ForeColor = System.Drawing.Color.Chocolate;
             this.txbUserName.Location = new System.Drawing.Point(474, 175);
@@ -396,6 +413,7 @@
             // txbIdAccount
             // 
             this.txbIdAccount.BackColor = System.Drawing.Color.Bisque;
+            this.txbIdAccount.Enabled = false;
             this.txbIdAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbIdAccount.ForeColor = System.Drawing.Color.Chocolate;
             this.txbIdAccount.Location = new System.Drawing.Point(474, 79);
@@ -415,6 +433,18 @@
             this.label8.Size = new System.Drawing.Size(161, 32);
             this.label8.TabIndex = 10;
             this.label8.Text = "ID Account";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::Code_PBL3.Properties.Resources.images__3_;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(731, 684);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
             // 
             // tabPage3
             // 
@@ -537,30 +567,6 @@
             this.label13.TabIndex = 16;
             this.label13.Text = "Current PassWord";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::Code_PBL3.Properties.Resources.icon_login1;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(728, 684);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackgroundImage = global::Code_PBL3.Properties.Resources.images__3_;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(731, 684);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            // 
             // pictureBox3
             // 
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Left;
@@ -588,14 +594,14 @@
             this.tabPInformationStaff.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 

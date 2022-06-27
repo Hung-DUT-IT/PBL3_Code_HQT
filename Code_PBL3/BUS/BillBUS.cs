@@ -75,5 +75,9 @@ namespace Code_PBL3.BUS
         {
             return BillDAO.Instance.GetTotalSales();
         }
+        public DataTable SearchBillById(int idBill)
+        {
+            return BillDAO.Instance.SearchBillById(idBill);
+        }
     }
 }

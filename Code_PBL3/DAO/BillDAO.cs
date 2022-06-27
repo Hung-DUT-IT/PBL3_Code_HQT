@@ -102,5 +102,10 @@ namespace Code_PBL3.DAO
                 return -1;
             }
         }
+        public DataTable SearchBillById(int idBill)
+        {
+            DataTable data = DataProvider.Instance.ExecuteQuery("select IdBill as [Code Bill], TableFood.Name as [Name Table], BIll.TotalPrice as [Total Price], BIll.DateCheckIn as [Date CheckIn], BIll.Discount as [Discount] from TableFood inner join BIll on TableFood.IdTable = BIll.IdTable where BIll.IDBill like '%" + idBill + "%'");
+            return data;
+        }
     }
 }

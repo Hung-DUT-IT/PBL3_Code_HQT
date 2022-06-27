@@ -109,8 +109,6 @@
             this.dgvFood = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.panel13 = new System.Windows.Forms.Panel();
-            this.cbbIsDelete = new System.Windows.Forms.ComboBox();
-            this.IsDelete = new System.Windows.Forms.Label();
             this.btnSearchTable = new System.Windows.Forms.Button();
             this.txbSearchTable = new System.Windows.Forms.TextBox();
             this.cbbArea = new System.Windows.Forms.ComboBox();
@@ -143,6 +141,8 @@
             this.btAddArea = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
             this.dgvArea = new System.Windows.Forms.DataGridView();
+            this.IsDelete = new System.Windows.Forms.Label();
+            this.cbbIsDelete = new System.Windows.Forms.ComboBox();
             this.tabAccount.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -189,7 +189,7 @@
             this.tabAccount.Controls.Add(this.tabPage4);
             this.tabAccount.Controls.Add(this.tabPage5);
             this.tabAccount.Controls.Add(this.tabPage6);
-            this.tabAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.tabAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.tabAccount.Location = new System.Drawing.Point(2, 3);
             this.tabAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabAccount.Name = "tabAccount";
@@ -202,11 +202,11 @@
             this.tabPage1.Controls.Add(this.panel3);
             this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 38);
+            this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage1.Size = new System.Drawing.Size(1884, 789);
+            this.tabPage1.Size = new System.Drawing.Size(1884, 796);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Account";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -234,7 +234,7 @@
             this.panel3.Location = new System.Drawing.Point(901, 2);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(983, 679);
+            this.panel3.Size = new System.Drawing.Size(983, 686);
             this.panel3.TabIndex = 2;
             // 
             // txbIDStaffInAc
@@ -245,7 +245,6 @@
             this.txbIDStaffInAc.Location = new System.Drawing.Point(416, 229);
             this.txbIDStaffInAc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txbIDStaffInAc.Name = "txbIDStaffInAc";
-            this.txbIDStaffInAc.ReadOnly = true;
             this.txbIDStaffInAc.Size = new System.Drawing.Size(403, 38);
             this.txbIDStaffInAc.TabIndex = 34;
             // 
@@ -277,7 +276,7 @@
             this.txbSearchAcount.Location = new System.Drawing.Point(143, 41);
             this.txbSearchAcount.Margin = new System.Windows.Forms.Padding(4);
             this.txbSearchAcount.Name = "txbSearchAcount";
-            this.txbSearchAcount.Size = new System.Drawing.Size(428, 34);
+            this.txbSearchAcount.Size = new System.Drawing.Size(428, 28);
             this.txbSearchAcount.TabIndex = 31;
             // 
             // nmTypeAccount
@@ -285,7 +284,7 @@
             this.nmTypeAccount.Location = new System.Drawing.Point(416, 604);
             this.nmTypeAccount.Margin = new System.Windows.Forms.Padding(4);
             this.nmTypeAccount.Name = "nmTypeAccount";
-            this.nmTypeAccount.Size = new System.Drawing.Size(404, 34);
+            this.nmTypeAccount.Size = new System.Drawing.Size(404, 28);
             this.nmTypeAccount.TabIndex = 30;
             this.nmTypeAccount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -374,6 +373,7 @@
             // txbIdAccount
             // 
             this.txbIdAccount.BackColor = System.Drawing.Color.Bisque;
+            this.txbIdAccount.Enabled = false;
             this.txbIdAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txbIdAccount.ForeColor = System.Drawing.Color.Chocolate;
             this.txbIdAccount.Location = new System.Drawing.Point(416, 126);
@@ -404,7 +404,7 @@
             this.panel2.Controls.Add(this.btDelAccount);
             this.panel2.Controls.Add(this.btUpdateAccount);
             this.panel2.Controls.Add(this.btAddAccount);
-            this.panel2.Location = new System.Drawing.Point(902, 679);
+            this.panel2.Location = new System.Drawing.Point(902, 686);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(982, 110);
@@ -463,7 +463,7 @@
             this.panel1.Location = new System.Drawing.Point(5, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(901, 787);
+            this.panel1.Size = new System.Drawing.Size(901, 794);
             this.panel1.TabIndex = 0;
             // 
             // dgvAcount
@@ -479,7 +479,7 @@
             this.dgvAcount.RowHeadersWidth = 51;
             this.dgvAcount.RowTemplate.Height = 24;
             this.dgvAcount.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAcount.Size = new System.Drawing.Size(895, 783);
+            this.dgvAcount.Size = new System.Drawing.Size(895, 790);
             this.dgvAcount.TabIndex = 0;
             // 
             // tabPage2
@@ -487,11 +487,11 @@
             this.tabPage2.Controls.Add(this.panel4);
             this.tabPage2.Controls.Add(this.panel8);
             this.tabPage2.Controls.Add(this.panel9);
-            this.tabPage2.Location = new System.Drawing.Point(4, 38);
+            this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(1884, 789);
+            this.tabPage2.Size = new System.Drawing.Size(1884, 796);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Staff";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -536,7 +536,7 @@
             this.txbsearchStaff.Location = new System.Drawing.Point(160, 54);
             this.txbsearchStaff.Margin = new System.Windows.Forms.Padding(4);
             this.txbsearchStaff.Name = "txbsearchStaff";
-            this.txbsearchStaff.Size = new System.Drawing.Size(428, 34);
+            this.txbsearchStaff.Size = new System.Drawing.Size(428, 28);
             this.txbsearchStaff.TabIndex = 33;
             // 
             // txbShiftStaff
@@ -748,11 +748,11 @@
             this.tabPage3.Controls.Add(this.panel5);
             this.tabPage3.Controls.Add(this.panel6);
             this.tabPage3.Controls.Add(this.panel7);
-            this.tabPage3.Location = new System.Drawing.Point(4, 38);
+            this.tabPage3.Location = new System.Drawing.Point(4, 31);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage3.Size = new System.Drawing.Size(1884, 789);
+            this.tabPage3.Size = new System.Drawing.Size(1884, 796);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Categories";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -791,7 +791,7 @@
             this.txbSearchCategory.Location = new System.Drawing.Point(146, 90);
             this.txbSearchCategory.Margin = new System.Windows.Forms.Padding(4);
             this.txbSearchCategory.Name = "txbSearchCategory";
-            this.txbSearchCategory.Size = new System.Drawing.Size(428, 34);
+            this.txbSearchCategory.Size = new System.Drawing.Size(428, 28);
             this.txbSearchCategory.TabIndex = 35;
             // 
             // txtNameCategory
@@ -865,6 +865,7 @@
             this.btShowCategory.TabIndex = 3;
             this.btShowCategory.Text = "Show";
             this.btShowCategory.UseVisualStyleBackColor = true;
+            this.btShowCategory.Click += new System.EventHandler(this.btShowCategory_Click);
             // 
             // btDeleteCategory
             // 
@@ -930,11 +931,11 @@
             this.tabPage4.Controls.Add(this.panel10);
             this.tabPage4.Controls.Add(this.panel11);
             this.tabPage4.Controls.Add(this.panel12);
-            this.tabPage4.Location = new System.Drawing.Point(4, 38);
+            this.tabPage4.Location = new System.Drawing.Point(4, 31);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage4.Size = new System.Drawing.Size(1884, 789);
+            this.tabPage4.Size = new System.Drawing.Size(1884, 796);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Food";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -977,7 +978,7 @@
             this.txbSearchFood.Location = new System.Drawing.Point(175, 53);
             this.txbSearchFood.Margin = new System.Windows.Forms.Padding(4);
             this.txbSearchFood.Name = "txbSearchFood";
-            this.txbSearchFood.Size = new System.Drawing.Size(428, 34);
+            this.txbSearchFood.Size = new System.Drawing.Size(428, 28);
             this.txbSearchFood.TabIndex = 37;
             // 
             // nmFoodPrice
@@ -989,7 +990,7 @@
             0,
             0});
             this.nmFoodPrice.Name = "nmFoodPrice";
-            this.nmFoodPrice.Size = new System.Drawing.Size(403, 34);
+            this.nmFoodPrice.Size = new System.Drawing.Size(403, 28);
             this.nmFoodPrice.TabIndex = 30;
             this.nmFoodPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -998,7 +999,7 @@
             this.cbbNameCategory.FormattingEnabled = true;
             this.cbbNameCategory.Location = new System.Drawing.Point(449, 380);
             this.cbbNameCategory.Name = "cbbNameCategory";
-            this.cbbNameCategory.Size = new System.Drawing.Size(403, 37);
+            this.cbbNameCategory.Size = new System.Drawing.Size(403, 30);
             this.cbbNameCategory.TabIndex = 29;
             // 
             // label17
@@ -1096,6 +1097,7 @@
             this.btnShowFood.TabIndex = 3;
             this.btnShowFood.Text = "Show";
             this.btnShowFood.UseVisualStyleBackColor = true;
+            this.btnShowFood.Click += new System.EventHandler(this.btnShowFood_Click);
             // 
             // btDeleteFod
             // 
@@ -1162,11 +1164,11 @@
             this.tabPage5.Controls.Add(this.panel13);
             this.tabPage5.Controls.Add(this.panel14);
             this.tabPage5.Controls.Add(this.panel15);
-            this.tabPage5.Location = new System.Drawing.Point(4, 38);
+            this.tabPage5.Location = new System.Drawing.Point(4, 31);
             this.tabPage5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage5.Size = new System.Drawing.Size(1884, 789);
+            this.tabPage5.Size = new System.Drawing.Size(1884, 796);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Table Food";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1195,26 +1197,6 @@
             this.panel13.Size = new System.Drawing.Size(983, 672);
             this.panel13.TabIndex = 5;
             // 
-            // cbbIsDelete
-            // 
-            this.cbbIsDelete.FormattingEnabled = true;
-            this.cbbIsDelete.Location = new System.Drawing.Point(444, 578);
-            this.cbbIsDelete.Name = "cbbIsDelete";
-            this.cbbIsDelete.Size = new System.Drawing.Size(403, 37);
-            this.cbbIsDelete.TabIndex = 42;
-            // 
-            // IsDelete
-            // 
-            this.IsDelete.AutoSize = true;
-            this.IsDelete.BackColor = System.Drawing.Color.Bisque;
-            this.IsDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.IsDelete.ForeColor = System.Drawing.Color.Chocolate;
-            this.IsDelete.Location = new System.Drawing.Point(153, 575);
-            this.IsDelete.Name = "IsDelete";
-            this.IsDelete.Size = new System.Drawing.Size(78, 32);
-            this.IsDelete.TabIndex = 41;
-            this.IsDelete.Text = "Note";
-            // 
             // btnSearchTable
             // 
             this.btnSearchTable.Location = new System.Drawing.Point(648, 47);
@@ -1231,7 +1213,7 @@
             this.txbSearchTable.Location = new System.Drawing.Point(169, 47);
             this.txbSearchTable.Margin = new System.Windows.Forms.Padding(4);
             this.txbSearchTable.Name = "txbSearchTable";
-            this.txbSearchTable.Size = new System.Drawing.Size(428, 34);
+            this.txbSearchTable.Size = new System.Drawing.Size(428, 28);
             this.txbSearchTable.TabIndex = 39;
             // 
             // cbbArea
@@ -1239,7 +1221,7 @@
             this.cbbArea.FormattingEnabled = true;
             this.cbbArea.Location = new System.Drawing.Point(444, 349);
             this.cbbArea.Name = "cbbArea";
-            this.cbbArea.Size = new System.Drawing.Size(403, 37);
+            this.cbbArea.Size = new System.Drawing.Size(403, 30);
             this.cbbArea.TabIndex = 29;
             // 
             // txbStatusTable
@@ -1349,6 +1331,7 @@
             this.btShowTable.TabIndex = 3;
             this.btShowTable.Text = "Show";
             this.btShowTable.UseVisualStyleBackColor = true;
+            this.btShowTable.Click += new System.EventHandler(this.btShowTable_Click);
             // 
             // btDeleteTable
             // 
@@ -1415,11 +1398,11 @@
             this.tabPage6.Controls.Add(this.panel16);
             this.tabPage6.Controls.Add(this.panel17);
             this.tabPage6.Controls.Add(this.panel18);
-            this.tabPage6.Location = new System.Drawing.Point(4, 38);
+            this.tabPage6.Location = new System.Drawing.Point(4, 31);
             this.tabPage6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage6.Size = new System.Drawing.Size(1884, 789);
+            this.tabPage6.Size = new System.Drawing.Size(1884, 796);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Area";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1458,7 +1441,7 @@
             this.txbSearchArea.Location = new System.Drawing.Point(177, 77);
             this.txbSearchArea.Margin = new System.Windows.Forms.Padding(4);
             this.txbSearchArea.Name = "txbSearchArea";
-            this.txbSearchArea.Size = new System.Drawing.Size(428, 34);
+            this.txbSearchArea.Size = new System.Drawing.Size(428, 28);
             this.txbSearchArea.TabIndex = 39;
             // 
             // txbNameArea
@@ -1533,6 +1516,7 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Show";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btDeleteArea
             // 
@@ -1593,6 +1577,26 @@
             this.dgvArea.RowTemplate.Height = 24;
             this.dgvArea.Size = new System.Drawing.Size(899, 781);
             this.dgvArea.TabIndex = 0;
+            // 
+            // IsDelete
+            // 
+            this.IsDelete.AutoSize = true;
+            this.IsDelete.BackColor = System.Drawing.Color.Bisque;
+            this.IsDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.IsDelete.ForeColor = System.Drawing.Color.Chocolate;
+            this.IsDelete.Location = new System.Drawing.Point(153, 575);
+            this.IsDelete.Name = "IsDelete";
+            this.IsDelete.Size = new System.Drawing.Size(78, 32);
+            this.IsDelete.TabIndex = 41;
+            this.IsDelete.Text = "Note";
+            // 
+            // cbbIsDelete
+            // 
+            this.cbbIsDelete.FormattingEnabled = true;
+            this.cbbIsDelete.Location = new System.Drawing.Point(444, 578);
+            this.cbbIsDelete.Name = "cbbIsDelete";
+            this.cbbIsDelete.Size = new System.Drawing.Size(403, 30);
+            this.cbbIsDelete.TabIndex = 42;
             // 
             // fManagers
             // 
@@ -1757,12 +1761,12 @@
         private System.Windows.Forms.Button btnSearchArea;
         private System.Windows.Forms.TextBox txbSearchArea;
         private System.Windows.Forms.Button btnShowFood;
-        private System.Windows.Forms.Label IsDelete;
-        private System.Windows.Forms.ComboBox cbbIsDelete;
         private System.Windows.Forms.Button btShowTable;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btShow;
         private System.Windows.Forms.NumericUpDown nmTypeAccount;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cbbIsDelete;
+        private System.Windows.Forms.Label IsDelete;
     }
 }

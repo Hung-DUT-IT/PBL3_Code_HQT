@@ -57,30 +57,47 @@ namespace Code_PBL3
             }
             else txbTypeAccount.Text = "Account Type Employee";
         }
-        private void tabPInformationStaff_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            string currentpass = txbCurrentPass.Text;
-            string newPass = txbNewPass.Text;
-            string confrimpass = txbConfrimPass.Text;
-            AccountBUS.Instance.AlterPass(currentpass, newPass, confrimpass,this.AccountID);
+            try
+            {
+                string currentpass = txbCurrentPass.Text;
+                string newPass = txbNewPass.Text;
+                string confrimpass = txbConfrimPass.Text;
+                AccountBUS.Instance.AlterPass(currentpass, newPass, confrimpass, this.AccountID);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }            
         }
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
-            string name = txbNamestaff.Text;
-            string phone = txbPhone.Text;
-            StaffBUS.Instance.UpdateStaffByMe(this.IdStaff, name, phone);
+            try
+            {
+                string name = txbNamestaff.Text;
+                string phone = txbPhone.Text;
+                StaffBUS.Instance.UpdateStaffByMe(this.IdStaff, name, phone);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }          
         }
 
         private void btUpdateAcc_Click(object sender, EventArgs e)
         {
-            string displayName = txbDisplayName.Text;
-            AccountBUS.Instance.UpdateAccountByMe(this.AccountID, displayName);
+            try
+            {
+                string displayName = txbDisplayName.Text;
+                AccountBUS.Instance.UpdateAccountByMe(this.AccountID, displayName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }

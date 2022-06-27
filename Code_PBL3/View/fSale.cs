@@ -188,12 +188,11 @@ namespace Code_PBL3
             int idBill = BillBUS.Instance.GetUnCheckBillIDByTableID(TableID);
             int discount = (int)nmDiscount.Value;
             float totalPrice = float.Parse(txbTotalPrice.Text.Split(',')[0]);
-            float finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
             if (idBill != -1)
             {
                 if (MessageBox.Show("Are you sure you want to charge ?? ", "Notify", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    fShowBill f1 = new fShowBill(this.IdAcc, idBill, finalTotalPrice, discount);
+                    fShowBill f1 = new fShowBill(this.IdAcc, idBill, totalPrice, discount);
                     this.Hide();
                     f1.ShowDialog();
                     ShowBill(idBill);

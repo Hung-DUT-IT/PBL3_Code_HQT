@@ -56,7 +56,7 @@ namespace Code_PBL3.DAO
         }
         public bool AddCategory(string name)
         {
-            string query = String.Format("insert into FoodCategory values ('{0}')" , name);
+            string query = String.Format("insert into FoodCategory values ('{0}', 0 )" , name);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }

@@ -1,5 +1,6 @@
 ﻿using Code_PBL3.BUS;
 using Code_PBL3.DAO;
+using Code_PBL3.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,7 +55,7 @@ namespace Code_PBL3
         private void btnStatistic_Click(object sender, EventArgs e)
         {
             txbPageNumber.Text = "1";
-            dgvBill.DataSource= BillBUS.Instance.LoadListByDate(DateFrom.Value, DateTo.Value);
+            dgvBill.DataSource= BillBUS.Instance.LoadListByDateAndPage(DateFrom.Value, DateTo.Value,1);
         }
 
         private void btnPrePage_Click(object sender, EventArgs e)
@@ -79,6 +80,31 @@ namespace Code_PBL3
             }
             txbPageNumber.Text = lastPage.ToString();
             dgvBill.DataSource = BillBUS.Instance.LoadListByDateAndPage(DateFrom.Value, DateTo.Value, lastPage);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            fChart f1 = new fChart();
+            f1.Show();
+        }
+
+        private void txbSearch_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if(txbSearch.Text != "")
+                {
+                    dgvBill.DataSource = BillBUS.Instance.SearchBillById(Convert.ToInt32(txbSearch.Text));
+                }
+                else
+                {
+                    return; 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

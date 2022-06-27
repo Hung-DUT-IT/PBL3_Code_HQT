@@ -61,7 +61,7 @@ namespace Code_PBL3.DAO
         }
         public bool InsertAccount(string userName, string displayName, int type,string pass)
         {
-            string query = string.Format("insert into Account values ('{0}','{1}','{2}','{3}',{4})",1, userName, pass,  displayName, type);
+            string query = string.Format("insert into Account values ('{0}','{1}','{2}','{3}',{4},0)",1, userName, pass,  displayName, type);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
@@ -80,7 +80,7 @@ namespace Code_PBL3.DAO
         public List<Account> SearchAccountByUserName(string userName)
         {
             List<Account> list = new List<Account>();
-            string query = string.Format("select * from Account where dbo.GetUnsignString(UserName) like '%'+ dbo.GetUnsignString('{0}') + '%'", userName);
+            string query = string.Format("select * from Account where dbo.GetUnsignString(UserName) like '%'+ dbo.GetUnsignString('{0}') + '%'", userName + "and IsDeleted = 0");
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {

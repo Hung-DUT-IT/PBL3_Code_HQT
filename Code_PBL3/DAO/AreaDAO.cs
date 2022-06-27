@@ -43,7 +43,7 @@ namespace Code_PBL3.DAO
         }
         public bool AddArea(string name)
         {
-            string query = String.Format("insert into Area values ('{0}')", name);
+            string query = String.Format("insert into Area values ('{0}',0)", name);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }

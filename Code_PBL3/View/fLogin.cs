@@ -30,7 +30,7 @@ namespace Code_PBL3
             string password = txbPassWord.Text;
             if (AccountBUS.Instance.Login(username, password))
             {
-                Account loginAccount = AccountDAO.Instance.GetAccountByUserName(username);
+                Account loginAccount = AccountBUS.Instance.GetAccountByUserName(username);
                 fHome f = new fHome(loginAccount.IdAccount);
                 this.Hide();
                 f.ShowDialog();

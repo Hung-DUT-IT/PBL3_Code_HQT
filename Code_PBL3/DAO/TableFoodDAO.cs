@@ -73,7 +73,7 @@ namespace Code_PBL3.DAO
         }
         public bool AddTable(int idarea, string name, string status = "Trống", int isDelete = 0 )
         {
-            string query = String.Format("insert into TableFood values ({0},'{1}',N'{2}',{3})", idarea, name, status, isDelete);
+            string query = String.Format("insert into TableFood values ({0},N'{1}',N'{2}',{3})", idarea, name, status, isDelete);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
@@ -86,7 +86,7 @@ namespace Code_PBL3.DAO
         }
         public bool DeleteTable(int idtable )
         {
-            string query = String.Format("update TableFood set Isdelete = 1 where IdTable = {0} ", idtable);
+            string query = String.Format("update TableFood set Isdeleted = 1 where IdTable = {0} ", idtable);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
             return result > 0;
         }
