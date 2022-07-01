@@ -109,6 +109,8 @@
             this.dgvFood = new System.Windows.Forms.DataGridView();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.cbbIsDelete = new System.Windows.Forms.ComboBox();
+            this.IsDelete = new System.Windows.Forms.Label();
             this.btnSearchTable = new System.Windows.Forms.Button();
             this.txbSearchTable = new System.Windows.Forms.TextBox();
             this.cbbArea = new System.Windows.Forms.ComboBox();
@@ -141,8 +143,22 @@
             this.btAddArea = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
             this.dgvArea = new System.Windows.Forms.DataGridView();
-            this.IsDelete = new System.Windows.Forms.Label();
-            this.cbbIsDelete = new System.Windows.Forms.ComboBox();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txbSearchCus = new System.Windows.Forms.TextBox();
+            this.txbNameCus = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txbIDCus = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.dgvCus = new System.Windows.Forms.DataGridView();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.btnShowCus = new System.Windows.Forms.Button();
+            this.txbPhoneCus = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txbPointCus = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.tabAccount.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -176,6 +192,11 @@
             this.panel17.SuspendLayout();
             this.panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArea)).BeginInit();
+            this.tabPage7.SuspendLayout();
+            this.panel19.SuspendLayout();
+            this.panel20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCus)).BeginInit();
+            this.panel21.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabAccount
@@ -189,6 +210,7 @@
             this.tabAccount.Controls.Add(this.tabPage4);
             this.tabAccount.Controls.Add(this.tabPage5);
             this.tabAccount.Controls.Add(this.tabPage6);
+            this.tabAccount.Controls.Add(this.tabPage7);
             this.tabAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.tabAccount.Location = new System.Drawing.Point(2, 3);
             this.tabAccount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1197,6 +1219,26 @@
             this.panel13.Size = new System.Drawing.Size(983, 672);
             this.panel13.TabIndex = 5;
             // 
+            // cbbIsDelete
+            // 
+            this.cbbIsDelete.FormattingEnabled = true;
+            this.cbbIsDelete.Location = new System.Drawing.Point(444, 578);
+            this.cbbIsDelete.Name = "cbbIsDelete";
+            this.cbbIsDelete.Size = new System.Drawing.Size(403, 30);
+            this.cbbIsDelete.TabIndex = 42;
+            // 
+            // IsDelete
+            // 
+            this.IsDelete.AutoSize = true;
+            this.IsDelete.BackColor = System.Drawing.Color.Bisque;
+            this.IsDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.IsDelete.ForeColor = System.Drawing.Color.Chocolate;
+            this.IsDelete.Location = new System.Drawing.Point(153, 575);
+            this.IsDelete.Name = "IsDelete";
+            this.IsDelete.Size = new System.Drawing.Size(78, 32);
+            this.IsDelete.TabIndex = 41;
+            this.IsDelete.Text = "Note";
+            // 
             // btnSearchTable
             // 
             this.btnSearchTable.Location = new System.Drawing.Point(648, 47);
@@ -1570,33 +1612,215 @@
             this.dgvArea.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvArea.BackgroundColor = System.Drawing.Color.PeachPuff;
             this.dgvArea.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArea.Location = new System.Drawing.Point(4, 2);
+            this.dgvArea.Location = new System.Drawing.Point(4, 1);
             this.dgvArea.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvArea.Name = "dgvArea";
             this.dgvArea.RowHeadersWidth = 51;
             this.dgvArea.RowTemplate.Height = 24;
-            this.dgvArea.Size = new System.Drawing.Size(899, 781);
+            this.dgvArea.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvArea.Size = new System.Drawing.Size(899, 782);
             this.dgvArea.TabIndex = 0;
             // 
-            // IsDelete
+            // tabPage7
             // 
-            this.IsDelete.AutoSize = true;
-            this.IsDelete.BackColor = System.Drawing.Color.Bisque;
-            this.IsDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.IsDelete.ForeColor = System.Drawing.Color.Chocolate;
-            this.IsDelete.Location = new System.Drawing.Point(153, 575);
-            this.IsDelete.Name = "IsDelete";
-            this.IsDelete.Size = new System.Drawing.Size(78, 32);
-            this.IsDelete.TabIndex = 41;
-            this.IsDelete.Text = "Note";
+            this.tabPage7.Controls.Add(this.panel21);
+            this.tabPage7.Controls.Add(this.panel20);
+            this.tabPage7.Controls.Add(this.panel19);
+            this.tabPage7.Location = new System.Drawing.Point(4, 31);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(1884, 796);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "Customer";
+            this.tabPage7.UseVisualStyleBackColor = true;
             // 
-            // cbbIsDelete
+            // panel19
             // 
-            this.cbbIsDelete.FormattingEnabled = true;
-            this.cbbIsDelete.Location = new System.Drawing.Point(444, 578);
-            this.cbbIsDelete.Name = "cbbIsDelete";
-            this.cbbIsDelete.Size = new System.Drawing.Size(403, 30);
-            this.cbbIsDelete.TabIndex = 42;
+            this.panel19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel19.BackColor = System.Drawing.Color.PeachPuff;
+            this.panel19.Controls.Add(this.txbPointCus);
+            this.panel19.Controls.Add(this.label21);
+            this.panel19.Controls.Add(this.txbPhoneCus);
+            this.panel19.Controls.Add(this.label16);
+            this.panel19.Controls.Add(this.btnSearch);
+            this.panel19.Controls.Add(this.txbSearchCus);
+            this.panel19.Controls.Add(this.txbNameCus);
+            this.panel19.Controls.Add(this.label12);
+            this.panel19.Controls.Add(this.txbIDCus);
+            this.panel19.Controls.Add(this.label13);
+            this.panel19.Location = new System.Drawing.Point(908, 0);
+            this.panel19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(978, 682);
+            this.panel19.TabIndex = 6;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(656, 77);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(199, 34);
+            this.btnSearch.TabIndex = 40;
+            this.btnSearch.Text = "Tìm Kiếm";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txbSearchCus
+            // 
+            this.txbSearchCus.Location = new System.Drawing.Point(177, 77);
+            this.txbSearchCus.Margin = new System.Windows.Forms.Padding(4);
+            this.txbSearchCus.Name = "txbSearchCus";
+            this.txbSearchCus.Size = new System.Drawing.Size(428, 28);
+            this.txbSearchCus.TabIndex = 39;
+            // 
+            // txbNameCus
+            // 
+            this.txbNameCus.BackColor = System.Drawing.Color.Bisque;
+            this.txbNameCus.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbNameCus.ForeColor = System.Drawing.Color.Chocolate;
+            this.txbNameCus.Location = new System.Drawing.Point(453, 281);
+            this.txbNameCus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txbNameCus.Name = "txbNameCus";
+            this.txbNameCus.ReadOnly = true;
+            this.txbNameCus.Size = new System.Drawing.Size(403, 38);
+            this.txbNameCus.TabIndex = 24;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Bisque;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label12.ForeColor = System.Drawing.Color.Chocolate;
+            this.label12.Location = new System.Drawing.Point(173, 287);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(231, 32);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Name Customer";
+            // 
+            // txbIDCus
+            // 
+            this.txbIDCus.BackColor = System.Drawing.Color.Bisque;
+            this.txbIDCus.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbIDCus.ForeColor = System.Drawing.Color.Chocolate;
+            this.txbIDCus.Location = new System.Drawing.Point(452, 167);
+            this.txbIDCus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txbIDCus.Name = "txbIDCus";
+            this.txbIDCus.ReadOnly = true;
+            this.txbIDCus.Size = new System.Drawing.Size(403, 38);
+            this.txbIDCus.TabIndex = 22;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Bisque;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label13.ForeColor = System.Drawing.Color.Chocolate;
+            this.label13.Location = new System.Drawing.Point(172, 173);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(181, 32);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "ID Customer";
+            // 
+            // panel20
+            // 
+            this.panel20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel20.Controls.Add(this.dgvCus);
+            this.panel20.Location = new System.Drawing.Point(3, 0);
+            this.panel20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(906, 794);
+            this.panel20.TabIndex = 7;
+            // 
+            // dgvCus
+            // 
+            this.dgvCus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvCus.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCus.BackgroundColor = System.Drawing.Color.PeachPuff;
+            this.dgvCus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCus.Location = new System.Drawing.Point(4, 2);
+            this.dgvCus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvCus.Name = "dgvCus";
+            this.dgvCus.RowHeadersWidth = 51;
+            this.dgvCus.RowTemplate.Height = 24;
+            this.dgvCus.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCus.Size = new System.Drawing.Size(902, 789);
+            this.dgvCus.TabIndex = 0;
+            // 
+            // panel21
+            // 
+            this.panel21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel21.BackColor = System.Drawing.Color.PeachPuff;
+            this.panel21.Controls.Add(this.btnShowCus);
+            this.panel21.Location = new System.Drawing.Point(908, 678);
+            this.panel21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(978, 116);
+            this.panel21.TabIndex = 8;
+            // 
+            // btnShowCus
+            // 
+            this.btnShowCus.Location = new System.Drawing.Point(359, 18);
+            this.btnShowCus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnShowCus.Name = "btnShowCus";
+            this.btnShowCus.Size = new System.Drawing.Size(225, 80);
+            this.btnShowCus.TabIndex = 4;
+            this.btnShowCus.Text = "Show";
+            this.btnShowCus.UseVisualStyleBackColor = true;
+            this.btnShowCus.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // txbPhoneCus
+            // 
+            this.txbPhoneCus.BackColor = System.Drawing.Color.Bisque;
+            this.txbPhoneCus.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbPhoneCus.ForeColor = System.Drawing.Color.Chocolate;
+            this.txbPhoneCus.Location = new System.Drawing.Point(452, 392);
+            this.txbPhoneCus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txbPhoneCus.Name = "txbPhoneCus";
+            this.txbPhoneCus.ReadOnly = true;
+            this.txbPhoneCus.Size = new System.Drawing.Size(403, 38);
+            this.txbPhoneCus.TabIndex = 42;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Bisque;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label16.ForeColor = System.Drawing.Color.Chocolate;
+            this.label16.Location = new System.Drawing.Point(172, 398);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(240, 32);
+            this.label16.TabIndex = 41;
+            this.label16.Text = "Phone Customer";
+            // 
+            // txbPointCus
+            // 
+            this.txbPointCus.BackColor = System.Drawing.Color.Bisque;
+            this.txbPointCus.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txbPointCus.ForeColor = System.Drawing.Color.Chocolate;
+            this.txbPointCus.Location = new System.Drawing.Point(453, 503);
+            this.txbPointCus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txbPointCus.Name = "txbPointCus";
+            this.txbPointCus.ReadOnly = true;
+            this.txbPointCus.Size = new System.Drawing.Size(403, 38);
+            this.txbPointCus.TabIndex = 44;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.Color.Bisque;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label21.ForeColor = System.Drawing.Color.Chocolate;
+            this.label21.Location = new System.Drawing.Point(173, 509);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(223, 32);
+            this.label21.TabIndex = 43;
+            this.label21.Text = "Point Customer";
             // 
             // fManagers
             // 
@@ -1647,6 +1871,12 @@
             this.panel17.ResumeLayout(false);
             this.panel18.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArea)).EndInit();
+            this.tabPage7.ResumeLayout(false);
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            this.panel20.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCus)).EndInit();
+            this.panel21.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1768,5 +1998,21 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbbIsDelete;
         private System.Windows.Forms.Label IsDelete;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.Button btnShowCus;
+        private System.Windows.Forms.Panel panel20;
+        private System.Windows.Forms.DataGridView dgvCus;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txbSearchCus;
+        private System.Windows.Forms.TextBox txbNameCus;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txbIDCus;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txbPointCus;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txbPhoneCus;
+        private System.Windows.Forms.Label label16;
     }
 }

@@ -21,6 +21,10 @@ namespace Code_PBL3.BUS
             private set { instance = value; }
         }
         private CustomerBUS() { }
+        public List<Customer> GetListCus()
+        {
+            return CustomerDAO.Instance.GetListCus();
+        }
         public Customer GetCusByPhone(string phone)
         {
             return CustomerDAO.Instance.GetCusByPhone(phone);
@@ -32,6 +36,14 @@ namespace Code_PBL3.BUS
         public int GetIDCusByPhone(string phone)
         {
             return CustomerDAO.Instance.GetIDCusByPhone(phone);
+        }
+        public void UpdatePointCus(int idCus)
+        {
+            CustomerDAO.Instance.UpdatePointCus(idCus);
+        }
+        public List<Customer> SearchCusByName(string Name)
+        {
+            return CustomerDAO.Instance.SearchCusByName(Name);
         }
     }
 }

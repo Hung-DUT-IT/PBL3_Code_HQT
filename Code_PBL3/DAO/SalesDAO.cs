@@ -37,7 +37,7 @@ namespace Code_PBL3.DAO
         public void LoadSales()
         {
             string query = "exec USP_Sale";
-            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            DataProvider.Instance.ExecuteNonQuery(query);
         }
     }
 }

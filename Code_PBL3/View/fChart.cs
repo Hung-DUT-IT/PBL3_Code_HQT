@@ -29,7 +29,7 @@ namespace Code_PBL3.View
             {
                 ChartSales.Series["Total Price"].Points.AddXY(item.NameMonth, item.TotalPrice);
                 if (item.TotalPrice > 0)
-                {                   
+                {
                     ChartSalesC.Series["Total Price"].Points.AddXY(item.NameMonth, item.TotalPrice);
                 }
                

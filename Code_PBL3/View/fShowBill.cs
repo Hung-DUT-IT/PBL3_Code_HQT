@@ -33,8 +33,16 @@ namespace Code_PBL3
                 idaAcc = value;
             }
         }
+        private int idCus;
+        public int IdCus
+        {
+            get { return idCus; }
+            set
+            {
+                idCus = value;
+            }
+        }
         private int idBill;
-
         public int IdBill
         {
             get { return idBill; }
@@ -62,10 +70,11 @@ namespace Code_PBL3
                 discount = value;
             }
         }
-        public fShowBill(int idAcc,int idbill, float totalPrice, int discount)
+        public fShowBill(int idAcc , int idCus , int idbill, float totalPrice, int discount)
         {
             InitializeComponent();
             this.IdAcc = idAcc;
+            this.IdCus = idCus;
             this.IdBill = idbill;
             this.TotalPrice = totalPrice;
             this.Discount = discount;
@@ -92,6 +101,11 @@ namespace Code_PBL3
             if (MessageBox.Show("Do you want to print invoices? ?", "Notify", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
                 BillBUS.Instance.CheckOut(this.IdBill, this.Discount, (float)Convert.ToDouble(lbTotalEnd.Text));
+                if(this.IdCus > 0)
+                {
+                    CustomerBUS.Instance.UpdatePointCus(this.IdCus);
+                    BillBUS.Instance.UpdateCusOnBill(this.IdBill, this.IdCus);
+                }
                 Document involve = new Document(@"C:\Users\huuhu\source\repos\PBL3_Code_HQT\Code_PBL3\BILL\Billdemox.doc");
                 involve.MailMerge.Execute(new[] { "ID_Bill" }, new[] { IdBill.ToString() });
                 involve.MailMerge.Execute(new[] { "TableName" }, new[] { lbNameTable.Text });
@@ -124,10 +138,14 @@ namespace Code_PBL3
                 involve.SaveAndOpenFile("Bill " + this.IdBill + ".doc");
                 e.Cancel = false;   
             }
-
             else
             {
                 BillBUS.Instance.CheckOut(this.IdBill, this.Discount, (float)Convert.ToDouble(lbTotalEnd.Text));
+                if (this.IdCus > 0)
+                {
+                    CustomerBUS.Instance.UpdatePointCus(this.IdCus);
+                    BillBUS.Instance.UpdateCusOnBill(this.IdBill, this.IdCus);
+                }
                 e.Cancel = false;
             }
         }

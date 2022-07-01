@@ -63,17 +63,17 @@ namespace Code_PBL3.BUS
         {
             return BillDAO.Instance.GetNumBillByDate(checkIn, checkOut);  
         }
-        public bool UpdateCusOnBill(int idbill, string idcus)
+        public void UpdateCusOnBill(int idbill, int idcus)
         {
-            return BillDAO.Instance.UpdateCusOnBill(idbill, idcus);
+            BillDAO.Instance.UpdateCusOnBill(idbill, idcus);
         }
         public bool DelBill(int idbill)
         {
             return BillDAO.Instance.DelBIll(idbill);
         }
-        public Double GetTotalSales()
+        public Double GetTotalSales(string dateCheckInTo, string dateCheckInfrom)
         {
-            return BillDAO.Instance.GetTotalSales();
+            return BillDAO.Instance.GetTotalSales(dateCheckInTo, dateCheckInfrom);
         }
         public DataTable SearchBillById(int idBill)
         {

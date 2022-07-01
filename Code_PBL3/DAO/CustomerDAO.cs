@@ -18,6 +18,18 @@ namespace Code_PBL3.DAO
             set { CustomerDAO.instance = value; }
         }
         private CustomerDAO() { }
+        public List<Customer> GetListCus()
+        {
+            List<Customer> list = new List<Customer>();
+            string query = "select * from Customer where IsDeleted = 0";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+                Customer customer = new Customer(item);
+                list.Add(customer);
+            }
+            return list;
+        }
         public Customer GetCusByPhone(string phone)
         {
             Customer cus = null;
@@ -39,13 +51,30 @@ namespace Code_PBL3.DAO
         {
             try
             {
-                return (int)DataProvider.Instance.ExecuteSaclar("select IdCtm from Bill where Phone = '" + phone + "'");
+                string query = "select IdCtm from Customer where Phone = '" + phone + "'";
+                return (int)DataProvider.Instance.ExecuteSaclar(query);
             }
             catch
             {
                 return -1;
             }
 
+        }
+        public void UpdatePointCus(int idCus)
+        {
+            DataProvider.Instance.ExecuteQuery("update Customer set Point = Point + 10 where IdCtm = " + idCus);
+        }
+        public List<Customer> SearchCusByName(string Name)
+        {
+            List<Customer> list = new List<Customer>();
+            string query = string.Format("select * from Customer where dbo.GetUnsignString(Name) like '%'+ dbo.GetUnsignString('{0}') + '%'", Name);
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+                Customer customer = new Customer(item);
+                list.Add(customer);
+            }
+            return list;
         }
     }
 }

@@ -74,12 +74,10 @@ namespace Code_PBL3.DAO
             }
 
         }
-        public bool UpdateCusOnBill(int idbill,string idcus)
+        public void UpdateCusOnBill(int idbill,int idcus)
         {
-            // khách hàng chua được cập nhật 
-            string query = "update bill set IdCtm =  where IdBill = ";
-            int ressult = DataProvider.Instance.ExecuteNonQuery(query, new object[] {idbill, idcus});
-            return ressult > 0;
+            string query = "update Bill set IdCtm = "+ idcus + " where idBill = " + idbill;
+            DataProvider.Instance.ExecuteQuery(query);
         }
         public int GetNumBillByDate(DateTime checkIn, DateTime checkOut)
         {
@@ -91,11 +89,11 @@ namespace Code_PBL3.DAO
             int ressult = DataProvider.Instance.ExecuteNonQuery(query);
             return ressult > 0;
         }
-        public Double GetTotalSales()
+        public Double GetTotalSales(string dateCheckInTo , string dateCheckInfrom)
         {
             try
             {
-                return (Double)DataProvider.Instance.ExecuteSaclar("select SUM(TotalPrice) from Bill ");
+                return (Double)DataProvider.Instance.ExecuteSaclar("select SUM(TotalPrice) from Bill where  DateCheckIn >= '" + dateCheckInTo + "' and DateCheckIn <= '" + dateCheckInfrom +  "' ");
             }
             catch
             {

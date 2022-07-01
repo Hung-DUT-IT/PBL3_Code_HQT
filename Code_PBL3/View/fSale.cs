@@ -177,12 +177,24 @@ namespace Code_PBL3
         private void button1_Click(object sender, EventArgs e)
         {
             TableFood table = dgvBill.Tag as TableFood;
+            int idcus = -1; 
             if (table == null)
             {
                 MessageBox.Show("Please Choose A Table !!");
                 return;
             }
-            Customer cus = CustomerBUS.Instance.GetCusByPhone(txbPhoneCus.Text.ToString());
+            try 
+            {
+                if(txbPhoneCus.Text != null && txbPhoneCus.Text != "")
+                {
+                    idcus = CustomerBUS.Instance.GetIDCusByPhone(txbPhoneCus.Text.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
 
             int TableID = table.IdTable;
             int idBill = BillBUS.Instance.GetUnCheckBillIDByTableID(TableID);
@@ -192,7 +204,7 @@ namespace Code_PBL3
             {
                 if (MessageBox.Show("Are you sure you want to charge ?? ", "Notify", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    fShowBill f1 = new fShowBill(this.IdAcc, idBill, totalPrice, discount);
+                    fShowBill f1 = new fShowBill(this.IdAcc , idcus, idBill, totalPrice, discount);
                     this.Hide();
                     f1.ShowDialog();
                     ShowBill(idBill);

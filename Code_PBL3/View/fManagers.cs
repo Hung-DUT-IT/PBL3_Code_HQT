@@ -21,6 +21,7 @@ namespace Code_PBL3
         BindingSource FoodList = new BindingSource();
         BindingSource TableList = new BindingSource();
         BindingSource AreaList = new BindingSource();
+        BindingSource CusList = new BindingSource();
         private int idAcc;
         public int IdAcc
         {
@@ -44,7 +45,8 @@ namespace Code_PBL3
             LoadCategory();
             LoadFood();
             LoadTable();
-            LoadArea();           
+            LoadArea();
+            LoadCus();
             LoadCbbCate();
             LoadCBBAreaTableFood();
             LoadCBBIsDeleteTable();
@@ -57,6 +59,7 @@ namespace Code_PBL3
             dgvFood.DataSource = FoodList;
             dgvTable.DataSource = TableList;
             dgvArea.DataSource = AreaList;
+            dgvCus.DataSource = CusList;
         }
         void Binding()
         {
@@ -66,6 +69,7 @@ namespace Code_PBL3
             AddFoodBiding();
             AddTableBiding();
             AddAreaBiding();
+            AddCusBiding();
         }
         void LoadAccount()
         {
@@ -119,6 +123,15 @@ namespace Code_PBL3
             dgvArea.Columns[0].HeaderText = "Area Code";
             dgvArea.Columns[1].HeaderText = "Area Name";
             dgvArea.Columns[2].Visible = false;
+        }
+        void LoadCus()
+        {
+            CusList.DataSource = CustomerBUS.Instance.GetListCus();
+            dgvCus.Columns[0].HeaderText = "Customer Code";
+            dgvCus.Columns[1].HeaderText = "Customer Name";
+            dgvCus.Columns[1].HeaderText = "Phone Name";
+            dgvCus.Columns[1].HeaderText = "Point Name";
+            dgvCus.Columns[4].Visible = false;
         }
         void LoadCbbCate()
         {
@@ -179,6 +192,13 @@ namespace Code_PBL3
         {
             txbIdArea.DataBindings.Add(new Binding("Text", dgvArea.DataSource, "IdArea", true, DataSourceUpdateMode.Never));
             txbNameArea.DataBindings.Add(new Binding("Text", dgvArea.DataSource, "NameArea", true, DataSourceUpdateMode.Never));
+        }
+        void AddCusBiding()
+        {
+            txbIDCus.DataBindings.Add(new Binding("Text", dgvCus.DataSource, "IdCus", true, DataSourceUpdateMode.Never));
+            txbNameCus.DataBindings.Add(new Binding("Text", dgvCus.DataSource, "NameCus", true, DataSourceUpdateMode.Never));
+            txbPhoneCus.DataBindings.Add(new Binding("Text", dgvCus.DataSource, "Phone", true, DataSourceUpdateMode.Never));
+            txbPointCus.DataBindings.Add(new Binding("Text", dgvCus.DataSource, "Point", true, DataSourceUpdateMode.Never));
         }
         #endregion
         #region Events TabAccount
@@ -637,6 +657,30 @@ namespace Code_PBL3
             AreaList.DataSource = AreaBUS.Instance.LoadAreaList();
         }
 
+        #endregion
+        #region Events TabCus
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CusList.DataSource = CustomerBUS.Instance.GetListCus();
+        }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txbSearchCus.Text != "" && txbSearchCus.Text != null)
+                {
+                    CusList.DataSource = CustomerBUS.Instance.SearchCusByName(txbSearchCus.Text.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("Vui Lòng Giá Trị Tìm Kiếm !!");
+                }     
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         #endregion
     }
 }
